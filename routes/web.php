@@ -11,12 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('notas.listado');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/notas/listado', 'NotaController@index')->name('listado');
+Auth::routes();
 
-Route::get('/notas/create', 'NotaController@create')->name('create');
+Route::get('/', 'Auth\LoginController@inicio');
 
-//Route::get('/archivos.listado', 'ArchivoController@index')->name('archivos');
+// Route::get('/', 'HomeController@index')->name('home');
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'HomeController@home')->name('home');
+
+
