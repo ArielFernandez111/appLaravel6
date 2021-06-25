@@ -26,3 +26,6 @@ Route::get('/', 'Auth\LoginController@inicio');
 Route::get('/home', 'HomeController@home')->name('home');
 
 
+Route::get('/notas/listado', 'NotaController@index')->name('listado');
+
+Route::get('/notas/create', 'NotaController@create')->name('create');
