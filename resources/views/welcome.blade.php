@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Hola Cesar Fernandez
+                    Hola Ariel
                 </div>
 
                 <div class="links">
