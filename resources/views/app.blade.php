@@ -153,17 +153,20 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('src/assets/images/users/1.jpg') }}" alt="user" class="rounded-circle" width="31"></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('src/assets/images/users/0.png') }}" alt="user" class="rounded-circle" width="31"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                                 <div class="d-flex no-block align-items-center p-3 mb-2 border-bottom">
-                                    <div class=""><img src="{{ asset('src/assets/images/users/1.jpg') }}" alt="user" class="rounded" width="80"></div>
+                                    <div class=""><img src="{{ asset('src/assets/images/users/0.png') }}" alt="user" class="rounded" width="80"></div>
                                     <div class="ml-2">
-                                        <h4 class="mb-0">Steave Jobs</h4>
-                                        <p class=" mb-0">varun@gmail.com</p>
+                                        <h4 class="mb-0">{{ auth()->user()->name }}</h4>
+                                        <p class=" mb-0">{{ auth()->user()->email }}</p>
                                         <a href="#!" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a>
                                     </div>
                                 </div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off mr-1 ml-1"></i> Cerrar Sesion</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off mr-1 ml-1"></i> {{ __('CERRAR SESION') }}</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </li>
                         <!-- ============================================================== -->
@@ -194,12 +197,15 @@
                             <!-- User profile -->
                             <div class="user-profile text-center position-relative pt-4 mt-1">
                                 <!-- User profile image -->
-                                <div class="profile-img m-auto"> <img src="{{ asset('src/assets/images/users/1.jpg') }}" alt="user" class="w-100 rounded-circle" /> </div>
+                                <div class="profile-img m-auto"> <img src="{{ asset('src/assets/images/users/0.png') }}" alt="user" class="w-100 rounded-circle" /> </div>
                                 <!-- User profile text-->
-                                <div class="profile-text py-1"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe <span class="caret"></span></a>
+                                <div class="profile-text py-1"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ auth()->user()->name }} <span class="caret"></span></a>
                                     <div class="dropdown-menu animated flipInY">
                                         <a href="#!" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
-                                        <div class="dropdown-divider"></div> <a href="#!" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar Sesion</a>
+                                        <div class="dropdown-divider"></div> <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Cerrar Sesion</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +240,10 @@
                 <!-- item-->
                 <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
                 <!-- item-->
-                <a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+                <a href="{{ route('logout') }}" class="link" data-toggle="tooltip" title="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-power"></i></a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
             <!-- End Bottom points-->
         </aside>
