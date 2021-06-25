@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('src/assets/images/favicon.png') }}">
-    <title>Monster admin Template - The Ultimate Multipurpose admin template</title>
+    <title>Sistema de Notas DGSGIF</title>
 	<link rel="canonical" href="https://www.wrappixel.com/templates/monsteradmin/" />
     <!-- Custom CSS -->
     <link href="{{ asset('src/assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
@@ -54,7 +54,7 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="{{ asset('src/assets/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
+                            <!--img src="{{ asset('src/assets/images/logo-icon.png') }}" alt="homepage" class="dark-logo" /-->
                             <!-- Light Logo icon -->
                             <img src="{{ asset('src/assets/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
                         </b>
@@ -62,7 +62,7 @@
                         <!-- Logo text -->
                         <span class="logo-text">
                              <!-- dark Logo text -->
-                             <img src="{{ asset('src/assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
+                             <!--img src="{{ asset('src/assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" /-->
                              <!-- Light Logo text -->    
                              <img src="{{ asset('src/assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" />
                         </span>
@@ -88,9 +88,9 @@
                         <!-- Comment -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
+                            <!--a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
                                  <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                            </a>
+                            </a-->
                             <div class="dropdown-menu mailbox animated bounceInDown">
                                 <ul class="list-style-none">
                                     <li>
@@ -216,7 +216,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span class="hide-menu">Registro</span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="{{ route('listado') }}" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Notas  </span></a></li>
-                                <li class="sidebar-item"><a href="{{ route('create') }}" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Archivos </span></a></li>
+                                <li class="sidebar-item"><a href="{{ route('listado_a') }}" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Archivos </span></a></li>
                             </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="sidebar" class="feather-icon"></i><span class="hide-menu">Configuracion </span></a>

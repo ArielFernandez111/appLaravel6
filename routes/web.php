@@ -29,3 +29,7 @@ Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/notas/listado', 'NotaController@index')->name('listado');
 
 Route::get('/notas/create', 'NotaController@create')->name('create');
+
+Route::get('/archivos/listado_a', 'ArchivoController@index')->name('listado_a');
+
+//Route::get('/notas/create', 'NotaController@create')->name('create');
