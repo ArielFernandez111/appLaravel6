@@ -32,4 +32,9 @@ Route::get('/notas/create', 'NotaController@create')->name('create');
 
 Route::get('/archivos/listado_a', 'ArchivoController@index')->name('listado_a');
 
+Route::get('/archivos/create_a', 'ArchivoController@create')->name('create_a');
+
 //Route::get('/notas/create', 'NotaController@create')->name('create');
+Route::post('/notas', 'NotaController@store')->name('notas.store');
+
+Route::get('notas/{nota}', 'NotaController@show')->name('notas.show');
