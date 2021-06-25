@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('notas.listado');
 });
+
+Route::get('/notas/listado', 'NotaController@index')->name('listado');
+
+Route::get('/notas/create', 'NotaController@create')->name('create');
+
+//Route::get('/archivos.listado', 'ArchivoController@index')->name('archivos');
