@@ -13,6 +13,7 @@ class NotaController extends Controller
     }
 
     public function index(){
+        
         $notas = Nota::orderBy('Id','desc')->paginate();
     
         return view('notas.listado', compact('notas'));
