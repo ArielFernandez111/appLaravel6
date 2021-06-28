@@ -15,8 +15,8 @@ class CreateArchivosTable extends Migration
     {
         Schema::create('archivos', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->string('titulo', 100);
+            $table->uuid('uuid');
+            $table->string('titulo', 250);
             $table->string('url', 250);
             
             $table->timestamps();

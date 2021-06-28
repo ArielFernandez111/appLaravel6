@@ -28,10 +28,7 @@ class HomeController extends Controller
 
     public function home()
     {
-
         $notas = Nota::orderBy('Id','desc')->paginate();
-    
-        return view('notas.listado', compact('notas'));
-
+        return view('notas.listado')->with(compact('notas'));
     }
 }

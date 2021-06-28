@@ -34,15 +34,28 @@
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center"
+        {{-- <div class="auth-wrapper d-flex no-block justify-content-center align-items-center"
             style="background:url({{ asset('src/assets/images/background/space.jpg') }}); background-size: cover; background-position: center center;">
             <div class="auth-box p-4 bg-white rounded">
                 @yield('content')
             </div>
 
+        </div> --}}
+        {{-- <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background-image: radial-gradient(circle, #1C3044, #142136 black);" >
+            <div class="auth-box p-4 bg-white rounded">
+                @yield('content')
+            </div>
+
+        </div> --}}
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background-image: radial-gradient(circle, #1C3044 5%, #142136 40%, #040D11 95%);" >
+            <div class="auth-box p-4 bg-white rounded">
+                @yield('content')
+            </div>
+            
         </div>
     </div>
 
+    
     <script src="{{ asset('src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
         <!-- Bootstrap tether Core JavaScript -->
     <script src="{{ asset('src/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
