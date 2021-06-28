@@ -26,15 +26,22 @@ Route::get('/', 'Auth\LoginController@inicio');
 Route::get('/home', 'HomeController@home')->name('home');
 
 
-Route::get('/notas/listado', 'NotaController@index')->name('listado');
+Route::get('/notas/listado', 'NotaController@index')->name('listado_nota');
 
-Route::get('/notas/create', 'NotaController@create')->name('create');
+Route::get('/notas/create', 'NotaController@create')->name('create_nota');
 
-Route::get('/archivos/listado_a', 'ArchivoController@index')->name('listado_a');
+Route::get('/archivos/listado', 'ArchivoController@index')->name('listado_archivo');
 
-Route::get('/archivos/create_a', 'ArchivoController@create')->name('create_a');
+Route::get('/archivos/create', 'ArchivoController@create')->name('create_archivo');
 
 //Route::get('/notas/create', 'NotaController@create')->name('create');
 Route::post('/notas', 'NotaController@store')->name('notas.store');
 
+Route::get('notas/{nota}/edit', 'NotaController@edit')->name('modifica_nota');
+Route::put('notas/{nota}', 'NotaController@update')->name('notas.update');
+
 Route::get('notas/{nota}', 'NotaController@show')->name('notas.show');
+
+Route::post('/archivos', 'ArchivoController@store')->name('archivos.store');
+
+Route::get('archivos/{uuid}/download', 'ArchivoController@download')->name('descarga_archivo');
