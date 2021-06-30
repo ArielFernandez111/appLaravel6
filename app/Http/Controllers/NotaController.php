@@ -29,15 +29,16 @@ class NotaController extends Controller
 
     public function create(){
         //$areas = [Area::get(), Documento::get()];
-        $areas = Area::get();
+        $areas      = Area::get();
+        $documentos = Documento::get();
         //$areas = Documento::get();
         //$notas = Area::get();
         //dd($areas);
-        return view('notas.create')->with(compact('areas'));
+        return view('notas.create')->with(compact('areas', 'documentos'));
     }
 
     public function store(Request $request){
-        
+
         /*$request->validate([
             'autor' => 'required',
             'nombre_des' => 'required',
@@ -54,9 +55,29 @@ class NotaController extends Controller
         $nota->cod_hr = $request->cod_hr;
         $nota->nro_hr = $request->nro_hr;
         $nota->reg_hr = $request->reg_hr;
-        $nota->gestion = $request->gestion;
+
+        $nota->gestion = date('Y');
         $nota->fecha_cite = $request->fecha_cite;
-        $nota->nro_cite = $request->nro_cite;
+
+        // SELECT max(nro_cite)
+        // FROM nota
+        // WHERE nota.id_area = id_area AND nota.id_documento = id_documento
+        
+        // Hallamos el maximo valor en nota_cite donde id_area sea igual a nota.id_area y id_documento sea igual a nota.id_documento
+        $nro_cite = Nota::where('id_area', $request->id_area)
+                        ->where('id_documento', $request->id_documento)
+                        ->max('nro_cite');
+        // Preguntamos si $nro_cite esta definido
+        if($nro_cite){
+            // Si esta definido se incrementa en 1
+            $nro_cite = $nro_cite + 1;
+        }else{
+            // Si no esta definido, su valor sera 1
+            $nro_cite = 1;
+        }
+
+        $nota->nro_cite = $nro_cite;
+        // $nota->nro_cite = $request->nro_cite;
         $nota->autor = $request->autor;
         $nota->nombre_des = $request->nombre_des;
         $nota->cargo_des = $request->cargo_des;
@@ -108,9 +129,20 @@ class NotaController extends Controller
         $nota->cod_hr = $request->cod_hr;
         $nota->nro_hr = $request->nro_hr;
         $nota->reg_hr = $request->reg_hr;
-        $nota->gestion = $request->gestion;
+
+        // $gestion = Nota::where('id', $request->id)
+        //                 ->select('gestion');
+        $gestion = 2021;
+        $nota->gestion = $gestion;
         $nota->fecha_cite = $request->fecha_cite;
-        $nota->nro_cite = $request->nro_cite;
+
+        // $nro_cite = Nota::where('id', $request->id)
+        //                 ->where('id_documento', $request->id_documento)
+        //                 ->max('nro_cite');
+        // $nro_cite = $request->find($request->id);
+        // dd($nro_cite);
+
+        $nota->nro_cite = $nro_cite;
         $nota->autor = $request->autor;
         $nota->nombre_des = $request->nombre_des;
         $nota->cargo_des = $request->cargo_des;

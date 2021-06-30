@@ -221,22 +221,11 @@
                             <div class="form-group">
                                 <h5>Tipo Documento <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    {{-- <select name="id_documento" id="id_documento" required class="form-control col-sm-7">
-                                        <option value="">Selecciona el tipo de documento</option>
-                                        
-                                        @foreach ($documentos as $documento)
-                                            <option value="{{$documento->id}}">{{$documento->nombre}}</option>
-                                        @endforeach
-                                        
-                                    </select> --}}
                                     <select name="id_documento" id="id_documento" required class="form-control col-sm-7">
                                         <option value="">Selecciona el tipo de documento</option>
-                                        <option value="1">NOTA EXTERNA</option>
-                                        <option value="2">NOTA INTERNA</option>
-                                        <option value="3">INFORME</option>
-                                        <option value="4">COMUNICADO</option>
-                                        <option value="5">MEMORANDUM</option>
-                                        <option value="6">INSTRUCTIVO</option>
+                                        @foreach ($documentos as $documento)
+                                            <option value="{{ $documento->id }}">{{ $documento->nombre }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -245,46 +234,77 @@
                                 <div class="controls">
                                     <select name="id_area" id="id_area" required class="form-control col-sm-7">
                                         <option value="">Selecciona el área</option>
-                                        
                                         @foreach ($areas as $area)
                                             <option value="{{$area->id}}">{{$area->nombre}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="text" name="cod_hr" class="form-control col-sm-1" required data-validation-required-message="This field is required">
                                     <input type="text" name="nro_hr" class="form-control col-sm-1" required data-validation-required-message="This field is required">
                                     <input type="text" name="reg_hr" class="form-control col-sm-1" required data-validation-required-message="This field is required">
                                 </div>
-                                {{-- <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div> --}}
+                            </div> --}}
+
+                            <div class="row pt-3">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
+                                        <input type="text" name="cod_hr" class="form-control" required data-validation-required-message="This field is required">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label"></label>
+                                        <input type="text" name="nro_hr" class="form-control" required data-validation-required-message="This field is required">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label"></label>
+                                        <input type="text" name="reg_hr" class="form-control" required data-validation-required-message="This field is required">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
                             </div>
+
+                            {{-- <div class="form-row">
+                                <div class="form-group col-md-2">
+                                  <label for="inputCity">Hoja de Ruta</label>
+                                  <input type="text" name="cod_hr" required data-validation-required-message="This field is required">
+                                </div>
+                                <div class="form-group col-md-2">
+                                  <label for="inputState">State</label>
+                                  <input type="text" name="nro_hr" required data-validation-required-message="This field is required">
+                                </div>
+                                <div class="form-group col-md-2">
+                                  <label for="inputZip">Zip</label>
+                                  <input type="text" name="reg_hr" required data-validation-required-message="This field is required">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                                  <label class="form-check-label" for="gridCheck">
+                                    Check me out
+                                  </label>
+                                </div>
+                              </div> --}}
+
+
                             <div class="form-group">
                                 <h5>Fecha CITE <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="date" name="fecha_cite" class="form-control col-md-4" required data-validation-required-message="This field is required" >
+                                    <input type="date" name="fecha_cite" class="form-control col-md-4" required data-validation-required-message="This field is required" value="{{ date('Y-m-d') }}">
                                 </div>
                                 {{-- <div class="form-control-feedback"><small>Add <code>maxlength='10'</code> attribute for maximum number of characters to accept. </small></div> --}}
                             </div>
-                            
-                            <div class="form-group">
-                                <h5>Nro CITE <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="nro_cite" class="form-control" required data-validation-required-message="This field is required" >
-                                </div>
-                                {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
-                            </div>
-
-                            <div class="form-group">
-                                <h5>Gestion <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="gestion" class="form-control" required data-validation-required-message="This field is required" >
-                                </div>
-                                {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
-                            </div>
-
                             <div class="form-group">
                                 <h5>Autor <span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -292,7 +312,6 @@
                                 </div>
                                 {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
                             </div>
-
                             <div class="form-group">
                                 <h5>Nombre Destinatario <span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -324,7 +343,7 @@
                             <div class="form-group">
                                 <h5>Fecha Recepcion<span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="date" name="fecha_rec" class="form-control col-md-4" required data-validation-required-message="This field is required">
+                                    <input type="date" name="fecha_rec" class="form-control col-md-4" required data-validation-required-message="This field is required" value="{{ date('Y-m-d') }}">
                                 </div>
                                 <div class="form-control-feedback">
                                     @error('fecha_rec')

@@ -80,7 +80,23 @@
                                         </td>
                                         <td><h6>{{ $nota->cod_hr }}-{{ $nota->nro_hr }}-{{ $nota->reg_hr }}</h6></td>
                                         <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_cite)) }}</h6></td>
-                                        <td><h6>MEFP/VPCF/DGSGIF/{{$nota->nro_cite}} {{$nota->gestion}}</h6></td>
+                                        <td><h6>
+                                            @if ( $nota->id_area === 1)
+                                                MEFP/VPCF/DGSGIF/N°
+                                            @else
+                                                @if ( $nota->id_area === 2)
+                                                    MEFP/VPCF/DGSGIF/UISS/N°
+                                                @else
+                                                    @if ( $nota->id_area === 3)
+                                                        MEFP/VPCF/DGSGIF/USI/N°
+                                                    @else
+                                                        MEFP/VPCF/DGSGIF/UIT/N°
+                                                    @endif
+                                                @endif
+                                            @endif
+                                            {{$nota->nro_cite}}/{{$nota->gestion}}
+                                        
+                                        </h6></td>
                                         <td><h6>{{ $nota->autor }}</h6></td>
                                         <td><h6>{{ $nota->nombre_des }}</h6></td>
                                         <td><h6>{{ $nota->cargo_des }}</h6></td>

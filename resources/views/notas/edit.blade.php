@@ -51,15 +51,40 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="text" name="cod_hr" class="form-control col-sm-1" required data-validation-required-message="This field is required" value="{{old('cod_hr', $nota->cod_hr)}}">
                                     <input type="text" name="nro_hr" class="form-control col-sm-1" required data-validation-required-message="This field is required" value="{{old('nro_hr', $nota->nro_hr)}}">
                                     <input type="text" name="reg_hr" class="form-control col-sm-1" required data-validation-required-message="This field is required" value="{{old('reg_hr', $nota->reg_hr)}}">
                                 </div>
-                                {{-- <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div> --}}
+                            </div> --}}
+
+                            <div class="row pt-3">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
+                                        <input type="text" name="cod_hr" class="form-control" required data-validation-required-message="This field is required" value="{{old('cod_hr', $nota->cod_hr)}}">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label"></label>
+                                        <input type="text" name="nro_hr" class="form-control" required data-validation-required-message="This field is required" value="{{old('nro_hr', $nota->nro_hr)}}">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label"></label>
+                                        <input type="text" name="reg_hr" class="form-control" required data-validation-required-message="This field is required" value="{{old('reg_hr', $nota->reg_hr)}}">
+                                        <small class="form-control-feedback"> </small> </div>
+                                </div>
+                                <!--/span-->
                             </div>
+
+
                             <div class="form-group">
                                 <h5>Fecha CITE <span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -68,21 +93,12 @@
                                 {{-- <div class="form-control-feedback"><small>Add <code>maxlength='10'</code> attribute for maximum number of characters to accept. </small></div> --}}
                             </div>
                             
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <h5>Nro CITE <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="text" name="nro_cite" class="form-control" required data-validation-required-message="This field is required" value="{{old('nro_cite', $nota->nro_cite)}}">
                                 </div>
-                                {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
-                            </div>
-
-                            <div class="form-group">
-                                <h5>Gestion <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="gestion" class="form-control" required data-validation-required-message="This field is required" value="{{old('gestion', $nota->gestion)}}">
-                                </div>
-                                {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
                                 <h5>Autor <span class="text-danger">*</span></h5>
