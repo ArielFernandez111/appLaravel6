@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Formulario de Registro de Notas DGSGIF</h4>
+                    <h4 class="card-title">Formulario de Registro de Documentos DGSGIF</h4>
                     <h6 class="card-subtitle">Debe llenar todos los campos del Formulario<!--a href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a--></h6>
                     <br><br>
                     <form action="{{route('archivos.store')}}" method="POST" enctype="multipart/form-data">

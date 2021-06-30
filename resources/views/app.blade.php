@@ -216,7 +216,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span class="hide-menu">Registro</span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="{{ route('listado_nota') }}" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Notas  </span></a></li>
-                                <li class="sidebar-item"><a href="{{ route('listado_archivo') }}" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Archivos </span></a></li>
+                                <li class="sidebar-item"><a href="{{ route('listado_archivo') }}" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Documentos </span></a></li>
                             </ul>
                         </li>
                         {{-- <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i data-feather="sidebar" class="feather-icon"></i><span class="hide-menu">Configuracion </span></a>
