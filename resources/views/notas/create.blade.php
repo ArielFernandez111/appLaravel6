@@ -205,7 +205,6 @@
     </div>
 </div> --}}
 
-
     <div class="container-fluid">
 
         <div class="row">
@@ -305,13 +304,12 @@
                                 </div>
                                 {{-- <div class="form-control-feedback"><small>Add <code>maxlength='10'</code> attribute for maximum number of characters to accept. </small></div> --}}
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <h5>Autor <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="text" name="autor" class="form-control" required data-validation-required-message="This field is required" >
                                 </div>
-                                {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <h5>Nombre Destinatario <span class="text-danger">*</span></h5>
                                 <div class="controls">

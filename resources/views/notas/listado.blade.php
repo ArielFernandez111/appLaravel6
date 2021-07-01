@@ -116,8 +116,102 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h3 class="card-title">Listado de Notas</h3>
+                    <br>
+                    <h6 class="card-subtitle"><a href="{{route('create_nota')}}" class="btn btn-primary">Nueva Nota</a></h6>
+                    <br>
+                    <table id="dtnotas" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Documento</th>
+                                <th>Area</th>
+                                <th>Hoja Ruta</th>
+                                <th>Fecha Asig CITE</th>
+                                <th>Nro CITE</th>
+                                <th>Autor</th>
+                                <th>Destinatario</th>
+                                <th>Cargo</th>
+                                <th>Institución</th>
+                                <th>Referencia</th>
+                                <th>Fecha Recepcion</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($notas as $nota)
+                            <tr>
+                                <td><h6>
+                                    @php
+                                        $documento = App\Documento::find($nota->id_documento);
+
+                                    @endphp
+                                    {{ $documento->nombre }}
+                                    </h6>
+                                </td>
+                                <td>
+                                    <h6>
+                                    @php
+                                        $area = App\Area::find($nota->id_area);
+
+                                    @endphp
+                                    {{ $area->nombre }}
+                                    </h6>
+                                </td>
+                                <td><h6>{{ $nota->cod_hr }}-{{ $nota->nro_hr }}-{{ $nota->reg_hr }}</h6></td>
+                                <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_cite)) }}</h6></td>
+                                <td><h6>
+                                    @if ( $nota->id_area === 1)
+                                        MEFP/VPCF/DGSGIF/N°
+                                    @else
+                                        @if ( $nota->id_area === 2)
+                                            MEFP/VPCF/DGSGIF/UISS/N°
+                                        @else
+                                            @if ( $nota->id_area === 3)
+                                                MEFP/VPCF/DGSGIF/USI/N°
+                                            @else
+                                                MEFP/VPCF/DGSGIF/UIT/N°
+                                            @endif
+                                        @endif
+                                    @endif
+                                    {{$nota->nro_cite}}/{{$nota->gestion}}
+                                
+                                </h6></td>
+                                <td><h6>{{ $nota->autor }}</h6></td>
+                                <td><h6>{{ $nota->nombre_des }}</h6></td>
+                                <td><h6>{{ $nota->cargo_des }}</h6></td>
+                                <td><h6>{{ $nota->inst_des }}</h6></td>
+                                <td><h6>{{ $nota->referencia }}</h6></td>
+                                <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_rec)) }}</h6></td>
+
+                                <td><h6><button class="jsgrid-button jsgrid-edit-button" type="button" title="Edit"></button><a href="{{route('modifica_nota',$nota)}}">Editar nota</a></h6></td>
+                                
+                            </tr>       
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 
 
 @stop
+
+@section('scripts')
+    <script>
+$(document).ready( function () {
+    $('#dtnotas').DataTable();
+} );
+
+    </script>
+@endsection
