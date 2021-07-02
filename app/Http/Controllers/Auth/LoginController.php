@@ -42,4 +42,15 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+
+    public function username()
+    {
+        $login = request()->input("login");
+        
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        request()->merge([$fieldType => $login]);
+
+        return $fieldType;
+    }
 }

@@ -10,7 +10,14 @@
 
         <div class="form-group ">
             <div class="col-xs-12">
-                <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo Electrónico"> 
+                <input id="login" type="text" class="form-control {{ $errors->has('username') || $errors->has('email') ? 'is-invalid' : ''}} " name="login" value="{{ old('username') ?: old('email') }}" required autofocus placeholder="Usuario"> 
+                {{-- <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo Electrónico">  --}}
+                @if($errors->has('username') || $errors->has('email'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('username') ?: $errors->first('email') }}</strong>
+                    </span>
+                @endif
+
             </div>
         </div>
 
