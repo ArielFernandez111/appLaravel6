@@ -25,12 +25,12 @@
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
         <!-- ============================================================== -->
-        <div class="preloader">
+        {{-- <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
                 <div class="lds-pos"></div>
             </div>
-        </div>
+        </div> --}}
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
         <!-- ============================================================== -->
@@ -47,14 +47,33 @@
             </div>
 
         </div> --}}
+        
+        
+        {{-- <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background-image: radial-gradient(circle, #1C3044 5%, #142136 40%, #040D11 95%);" > --}}
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background-image: radial-gradient(circle, #1C3044 5%, #142136 40%, #040D11 95%);" >
-            <div class="auth-box p-4 bg-white rounded">
-                @yield('content')
+            {{-- <div class="auth-box p-4 rounded"> --}}
+                {{-- @include('layouts.partials.header') --}}
+            {{-- </div> --}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-lg-12">aaaaa</div>
+                    <div class="col-md-4 col-lg-12">sssss</div>
+                    <div class="col-md-4 col-lg-12">ddddd</div>
+                </div>
             </div>
-            
+
+            <div class="auth-box p-4 bg-white rounded">
+                
+
+                @yield('content')
+
+                {{-- @include('layouts.partials.footer') --}}
+            </div>
+
         </div>
     </div>
 
+    
     
     <script src="{{ asset('src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
         <!-- Bootstrap tether Core JavaScript -->
