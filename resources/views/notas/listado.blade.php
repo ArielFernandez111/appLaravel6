@@ -189,7 +189,14 @@
                                 <td><h6>{{ $nota->referencia }}</h6></td>
                                 <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_rec)) }}</h6></td>
 
-                                <td><h6><button class="jsgrid-button jsgrid-edit-button" type="button" title="Edit"></button><a href="{{route('modifica_nota',$nota)}}">Editar nota</a></h6></td>
+                                <td>
+                                    <h6>
+                                        <button class="jsgrid-button jsgrid-edit-button" type="button" title="Edit"></button>
+                                        <a href="{{route('modifica_nota',$nota)}}">Editar nota</a>
+                                    </h6>
+                                    <a href="" class="btn btn-info">Ver</a>
+
+                                </td>
                                 
                             </tr>       
                             @endforeach

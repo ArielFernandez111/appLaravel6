@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('src/assets/images/favicon.png') }}">
+    {{-- <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('src/assets/images/favicon.png') }}"> --}}
     <title>Sistema de Notas DGSGIF</title>
 	<link rel="canonical" href="https://www.wrappixel.com/templates/monsteradmin/" />
     <!-- Custom CSS -->
@@ -43,7 +43,8 @@
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            {{-- <nav class="navbar top-navbar navbar-expand-md navbar-dark" style="background-image: linear-gradient(to right, #263d53, #4c607e);"> --}}
+                <nav class="navbar top-navbar navbar-expand-md navbar-dark" style="background-image: linear-gradient(to right, #081e80, #4c607e);">
                 <div class="navbar-header">
                     <!-- This is for the sidebar toggle which is visible on mobile only -->
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
@@ -79,7 +80,7 @@
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <div class="navbar-collapse collapse" id="navbarSupportedContent"  style="background-image: linear-gradient(to right, #081e80, #4c607e);">
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->

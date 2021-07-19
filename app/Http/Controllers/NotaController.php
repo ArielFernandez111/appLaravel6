@@ -54,10 +54,25 @@ class NotaController extends Controller
         $nota->id_documento = $request->id_documento;
         $nota->id_area = $request->id_area;
         
-        $nota->cod_hr = $request->cod_hr;
-        $nota->nro_hr = $request->nro_hr;
-        $nota->reg_hr = $request->reg_hr;
+        $nota->cod_hr = 46;
 
+        $nro_hr = Nota::where('gestion', date('Y'))
+                        ->whereNotNull('nro_hr')
+                        ->max('nro_hr');
+        dd($nro_hr);
+        // Preguntamos si $nro_hr esta definido
+        if($nro_hr){
+            // Si esta definido se incrementa en 1
+            $nro_hr = $nro_hr + 1;
+        }else{
+            // Si no esta definido, su valor sera 1
+            $nro_hr = 1;
+        }
+        dd($nro_hr);
+        $nota->nro_hr = $nro_hr;
+
+        $nota->reg_hr = "D";
+        
         $nota->gestion = date('Y');
         $nota->fecha_cite = $request->fecha_cite;
 
@@ -87,6 +102,7 @@ class NotaController extends Controller
         $nota->inst_des = $request->inst_des;
         $nota->referencia = $request->referencia;
         $nota->fecha_rec = $request->fecha_rec;
+        $nota->fecha_entrega = $request->fecha_entrega;
         //dd($nota);
         $nota->save();
 
@@ -137,6 +153,7 @@ class NotaController extends Controller
         $nota->inst_des = $request->inst_des;
         $nota->referencia = $request->referencia;
         $nota->fecha_rec = $request->fecha_rec;
+        $nota->fecha_entrega = $request->fecha_entrega;
 
         $nota->save();
 

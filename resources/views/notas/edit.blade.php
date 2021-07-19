@@ -138,6 +138,19 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <h5>Fecha Entrega<span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <input type="date" name="fecha_entrega" class="form-control col-md-4" required data-validation-required-message="This field is required" value="{{old('fecha_entrega', $nota->fecha_entrega)}}">
+                                </div>
+                                <div class="form-control-feedback">
+                                    @error('fecha_entrega')
+                                        <br>
+                                            <small>*{{$message}}</small>
+                                        <br>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="text-xs-right">
                                 <button type="submit" class="btn btn-primary">Actualizar Nota</button>

@@ -248,29 +248,26 @@
                                 </div>
                             </div> --}}
 
-                            <div class="row pt-3">
+                            {{-- <div class="row pt-3">
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
                                         <input type="text" name="cod_hr" class="form-control" required data-validation-required-message="This field is required">
                                         <small class="form-control-feedback"> </small> </div>
                                 </div>
-                                <!--/span-->
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label class="control-label"></label>
                                         <input type="text" name="nro_hr" class="form-control" required data-validation-required-message="This field is required">
                                         <small class="form-control-feedback"> </small> </div>
                                 </div>
-                                <!--/span-->
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label class="control-label"></label>
                                         <input type="text" name="reg_hr" class="form-control" required data-validation-required-message="This field is required">
                                         <small class="form-control-feedback"> </small> </div>
                                 </div>
-                                <!--/span-->
-                            </div>
+                            </div> --}}
 
                             {{-- <div class="form-row">
                                 <div class="form-group col-md-2">
@@ -345,6 +342,19 @@
                                 </div>
                                 <div class="form-control-feedback">
                                     @error('fecha_rec')
+                                        <br>
+                                            <small>*{{$message}}</small>
+                                        <br>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h5>Fecha Entrega<span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <input type="date" name="fecha_entrega" class="form-control col-md-4" required data-validation-required-message="This field is required" value="{{ date('Y-m-d') }}">
+                                </div>
+                                <div class="form-control-feedback">
+                                    @error('fecha_entrega')
                                         <br>
                                             <small>*{{$message}}</small>
                                         <br>

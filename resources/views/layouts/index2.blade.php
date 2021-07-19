@@ -15,24 +15,12 @@
     <link href="{{ asset('dist/css/style.min.css') }}" rel="stylesheet">
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <style>
-        html, body {
-            /* height: 100%; */
-            min-height:100vh;
-            margin: 0px;
-            /* background-image: radial-gradient(circle, #1C3044 5%, #142136 40%, #040D11 95%); */
-            background-image: radial-gradient(circle, #263d53 5%, #14233a 40%, #090d24 95%);
-        }
-        .container {
-            height: 100%;
-        }
-    </style>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
 
-<body>
+<body style="max-height: 100%">
     {{-- <div class="main-wrapper"> --}}
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
@@ -62,21 +50,21 @@
         
         
         {{-- <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background-image: radial-gradient(circle, #1C3044 5%, #142136 40%, #040D11 95%);" > --}}
-        {{-- <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background-image: radial-gradient(circle, #1C3044 5%, #142136 40%, #040D11 95%);" > --}}
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background-image: radial-gradient(circle, #1C3044 5%, #142136 40%, #040D11 95%);" >
             {{-- <div class="auth-box p-4 rounded"> --}}
                 {{-- @include('layouts.partials.header') --}}
             {{-- </div> --}}
             
 
-            {{-- <div class="auth-box p-4 bg-white rounded">
+            <div class="auth-box p-4 bg-white rounded">
                 
 
-                @yield('content') --}}
+                @yield('content')
 
                 {{-- @include('layouts.partials.footer') --}}
-            {{-- </div>
+            </div>
 
-        </div> --}}
+        </div>
 
         {{-- <div class="container">
             <div class="row">
@@ -88,40 +76,25 @@
             </div>
         </div> --}}
 
-        <div class="container">
-            <div class="col align-self-center">
-                <div class="col-md-4 p-4 offset-md-4">
-                    @include('layouts.partials.header')
-                </div>
-            </div>
+        {{-- <div class="container">
 
-            <div class="row">
-                <div class="col-md-4 p-4 offset-md-4 bg-white rounded">
-                    @yield('content')
-                </div>
-            </div>
+            <header class="row">
+                @include('layouts.partials.header')
+            </header>
+        
+            <div id="main" class="row">
+        
+                    @yield('content')    </div>
+        
+            <footer class="row">
+                @include('layouts.partials.footer')
+            </footer>
+        
+        </div> --}}
 
-            {{-- <div class="row"> --}}
-                <div class="card-footer text-center text-muted">
-                    @include('layouts.partials.footer')
-                    {{-- <h1>hola mundo</h1> --}}
-                </div>
-                {{-- <h1>hola mundo</h1> --}}
-            {{-- </div> --}}
-        </div>
-        {{-- <nav class="navbar fixed-bottom navbar-light">
-            <span class="navbar-text text-light">
-                <div class="row">
-                    <div class="col-md-12">
-                        © 2021. Dirección General de Sistemas de Gestión de Información Fiscal. Todos los derechos reservados.
-                    </div>
-                </div>
-            </span>
-        </nav> --}}
-        {{-- <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum, molestias?</h1> --}}
-    {{-- </div> --}}
+    </div>
 
-
+    
     
     <script src="{{ asset('src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
         <!-- Bootstrap tether Core JavaScript -->
