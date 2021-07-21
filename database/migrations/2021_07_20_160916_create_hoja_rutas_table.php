@@ -16,18 +16,19 @@ class CreateHojaRutasTable extends Migration
         Schema::create('hoja_rutas', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->foreign('id_documento')
-                    ->references('id')->on('documentos');
+            $table->unsignedBigInteger('id_nota')->unique();//->nullable();
+
+            $table->foreign('id_nota')
+                    ->references('id')->on('notas')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
                     //->references('set null');
 
-            $table->foreign('id_area')
-                    ->references('id')->on('areas');
-                    //->references('set null');
-
-            $table->string('cod_hr', 5);
-            $table->integer('nro_hr', 5);
-            $table->string('reg_hr', 5);
+            $table->string('codigo', 5);
+            $table->integer('numero', 5);
+            $table->string('registro', 5);
             $table->string('gestion', 10);
+            $table->timestamps();
         });
     }
 

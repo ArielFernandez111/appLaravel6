@@ -11,6 +11,7 @@ class Area extends Model
         'sigla',
     ];
 
+    //Relacion uno a muchos - un area tiene muchas notas
     public function notas(){
         //return $this->hasMany('App\Nota','id_area');
         return $this->hasMany('App\Nota');

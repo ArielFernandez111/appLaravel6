@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Relacion uno a muchos - un usuario va a tener muchas notas
+    public function notas(){
+        return $this->hasMany('App\Nota');
+    }
+
+    //Relacion muchos a muchos - un usuario va a tener muchos roles
+    public function roles(){
+        return $this->belongsToMany('App\Role');
+    }
 }

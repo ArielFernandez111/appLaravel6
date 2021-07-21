@@ -15,13 +15,23 @@ class Nota extends Model
         'nro_hr',
     ];
 
-    // esta area pertenece a una nota
+    //Relacion uno a muchos (inversa)
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    //Relacion uno a muchos (inversa) - este documento pertenece a una nota
+    public function documento(){
+        return $this->belongsTo('App\Documento');
+    }
+
+    //Relacion uno a muchos (inversa) -  esta area pertenece a una nota
     public function area(){
         return $this->belongsTo('App\Area');
     }
 
-    // este documento pertenece a una nota
-    public function documento(){
-        return $this->belongsTo('App\Documento');
+    // esta hojaruta pertenece a una nota // Relacion uno a uno
+    public function hojaruta(){
+        return $this->hasOne('App\HojaRuta');
     }
 }

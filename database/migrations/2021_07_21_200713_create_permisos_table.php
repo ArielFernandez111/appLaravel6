@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddHojaRutaDocumentosTable extends Migration
+class CreatePermisosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddHojaRutaDocumentosTable extends Migration
      */
     public function up()
     {
-        Schema::table('documentos', function(Blueprint $table){
-            $table->String('hoja_ruta')->after('nombre');
+        Schema::create('permisos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+
+            $table->string('name',50);
+
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddHojaRutaDocumentosTable extends Migration
      */
     public function down()
     {
-        Schema::table('documentos', function(Blueprint $table){
-            $table->dropColumn('hoja_ruta');
-        });
+        Schema::dropIfExists('permisos');
     }
 }

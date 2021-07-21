@@ -10,6 +10,7 @@ class Documento extends Model
         'nombre',
     ];
 
+    //Relacion uno a muchos - una categoria puede asignarse a varias notas
     public function notas(){
         //return $this->hasMany('App\Nota','id_area');
         return $this->hasMany('App\Nota');
