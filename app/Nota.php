@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Nota extends Model
 {
 
-
     protected $fillable = [
+        'id_user',
         'id_documento',
         'id_area',
-        'cod_hr',
-        'nro_hr',
+        'gestion',
+        'fecha_cite',
+        'nro_cite',
+        'nombre_des',
+        'cargo_cite',
+        'institucion_cite',
+        'referencia',
+        'fecha_recepcion',
+        'fecha_entrega',
     ];
 
     //Relacion uno a muchos (inversa)
@@ -32,6 +39,6 @@ class Nota extends Model
 
     // esta hojaruta pertenece a una nota // Relacion uno a uno
     public function hojaruta(){
-        return $this->hasOne('App\HojaRuta');
+        return $this->hasOne('App\HojaRuta','id_nota');
     }
 }

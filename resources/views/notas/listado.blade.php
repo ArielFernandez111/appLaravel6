@@ -35,8 +35,8 @@
                                     <th><h6 class="font-weight-bold">Nro. CITE</h6></th>
                                     <th><h6 class="font-weight-bold">Autor</h6></th>
                                     <th><h6 class="font-weight-bold">Destinatario</h6></th>
-                                    <th><h6 class="font-weight-bold">Cargo</h6></th>
-                                    <th><h6 class="font-weight-bold">Institucion</h6></th>
+                                    {{-- <th><h6 class="font-weight-bold">Cargo</h6></th>
+                                    <th><h6 class="font-weight-bold">Institucion</h6></th> --}}
                                     <th><h6 class="font-weight-bold">Referencia</h6></th>
                                     <th><h6 class="font-weight-bold">Fecha Recepcion</h6></th>
                                     <th><h6 class="font-weight-bold">Accion</h6></th>
@@ -51,8 +51,8 @@
                                     <th><h6 class="font-weight-bold">Nro. CITE</h6></th>
                                     <th><h6 class="font-weight-bold">Autor</h6></th>
                                     <th><h6 class="font-weight-bold">Destinatario</h6></th>
-                                    <th><h6 class="font-weight-bold">Cargo</h6></th>
-                                    <th><h6 class="font-weight-bold">Institucion</h6></th>
+                                    {{-- <th><h6 class="font-weight-bold">Cargo</h6></th>
+                                    <th><h6 class="font-weight-bold">Institucion</h6></th> --}}
                                     <th><h6 class="font-weight-bold">Referencia</h6></th>
                                     <th><h6 class="font-weight-bold">Fecha Recepcion</h6></th>
                                     <th><h6 class="font-weight-bold">Accion</h6></th>
@@ -78,7 +78,22 @@
                                             {{ $area->nombre }}
                                             </h6>
                                         </td>
-                                        <td><h6>{{ $nota->cod_hr }}-{{ $nota->nro_hr }}-{{ $nota->reg_hr }}</h6></td>
+                                        <td>
+                                            <h6>
+                                                @if ( $nota->id_documento === 1 || $nota->id_documento === 2 || $nota->id_documento === 3 || $nota->id_documento === 4)  
+                                                    {{ $nota->hojaruta->codigo }}-{{ $nota->hojaruta->numero }}-{{ $nota->hojaruta->registro }}
+                                                @endif
+                                            {{-- @php
+                                                // $hojaruta = App\HojaRuta::all();
+                                                // dd($hojaruta);
+                                                $hojaruta = App\Nota::find($nota->id);
+                                                 dd($hojaruta->hojaruta);
+                                            @endphp
+                                            {{ $hojaruta->codigo }} --}}
+
+                                                {{-- {{ $nota->cod_hr }}-{{ $nota->nro_hr }}-{{ $nota->reg_hr }} --}}
+                                            </h6>
+                                        </td>
                                         <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_cite)) }}</h6></td>
                                         <td><h6>
                                             @if ( $nota->id_area === 1)
@@ -97,14 +112,28 @@
                                             {{$nota->nro_cite}}/{{$nota->gestion}}
                                         
                                         </h6></td>
-                                        <td><h6>{{ $nota->autor }}</h6></td>
-                                        <td><h6>{{ $nota->nombre_des }}</h6></td>
-                                        <td><h6>{{ $nota->cargo_des }}</h6></td>
-                                        <td><h6>{{ $nota->inst_des }}</h6></td>
-                                        <td><h6>{{ $nota->referencia }}</h6></td>
-                                        <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_rec)) }}</h6></td>
+                                        <td>
+                                            <h6>
+                                            @php
+                                                $user = App\User::find($nota->id_user);
 
-                                        <td><h6><button class="jsgrid-button jsgrid-edit-button" type="button" title="Edit"></button><a href="{{route('modifica_nota',$nota)}}">Editar nota</a></h6></td>
+                                            @endphp
+                                            {{ $user->name }}
+                                            </h6>
+                                        </td>
+                                        <td><h6>{{ $nota->nombre_des }}</h6></td>
+                                        {{-- <td><h6>{{ $nota->cargo_des }}</h6></td>
+                                        <td><h6>{{ $nota->institucion_des }}</h6></td> --}}
+                                        <td><h6>{{ $nota->referencia }}</h6></td>
+                                        <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_recepcion)) }}</h6></td>
+
+                                        <td>
+                                            <h6>
+                                                {{-- <button class="jsgrid-button jsgrid-edit-button" type="button" title="Edit"></button> --}}
+                                                <a href="{{route('modifica_nota',$nota)}}" class="btn btn-info">Editar</a>
+                                                <a href="{{route('show_nota',$nota)}}" class="btn btn-info">Ver</a>
+                                            </h6>
+                                        </td>
                                         
                                     </tr>       
                                 @endforeach
@@ -182,12 +211,20 @@
                                     {{$nota->nro_cite}}/{{$nota->gestion}}
                                 
                                 </h6></td>
-                                <td><h6>{{ $nota->autor }}</h6></td>
+                                <td>
+                                    <h6>
+                                    @php
+                                        $user = App\User::find($nota->id_user);
+
+                                    @endphp
+                                    {{ $user->name }}
+                                    </h6>
+                                </td>
                                 <td><h6>{{ $nota->nombre_des }}</h6></td>
                                 <td><h6>{{ $nota->cargo_des }}</h6></td>
-                                <td><h6>{{ $nota->inst_des }}</h6></td>
+                                <td><h6>{{ $nota->institucion_des }}</h6></td>
                                 <td><h6>{{ $nota->referencia }}</h6></td>
-                                <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_rec)) }}</h6></td>
+                                <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_recepcion)) }}</h6></td>
 
                                 <td>
                                     <h6>
@@ -216,9 +253,9 @@
 
 @section('scripts')
     <script>
-$(document).ready( function () {
-    $('#dtnotas').DataTable();
-} );
+    $(document).ready( function () {
+        $('#dtnotas').DataTable();
+    } );
 
     </script>
 @endsection

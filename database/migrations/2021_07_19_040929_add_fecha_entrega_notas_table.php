@@ -14,7 +14,7 @@ class AddFechaEntregaNotasTable extends Migration
     public function up()
     {
         Schema::table('notas', function(Blueprint $table){
-            $table->date('fecha_entrega')->nullable()->after('fecha_rec');
+            $table->date('fecha_entrega')->nullable()->after('fecha_recepcion');
         });
     }
 

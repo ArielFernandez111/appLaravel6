@@ -239,6 +239,127 @@
                                     </select>
                                 </div>
                             </div>
+
+                            {{-- <div class="form-group">
+                                <h5>Asignar hoja de ruta manualmente </h5>
+                                <div class="col-sm-4">
+                                    <div class="btn-group btn-group-toggle unit-toggler pull-right" data-toggle="buttons">
+                                        <label class="btn btn-select cm-unit active">  
+                                          <input type="radio" name="hojaruta" id="hojaruta1" autocomplete="off" /> Si  
+                                        </label>
+                                      
+                                        <label class="btn btn-select">
+                                          <input type="radio" name="hojaruta" id="hojaruta2" autocomplete="off" checked/> No
+                                        </label>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    
+                                    <span class="unit done">
+                                        <em></em>
+                                        <em style="display: none;">
+
+                                            <div class="row pt-3">
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
+                                                        <input type="text" name="codigo" class="form-control"  data-validation-required-message="This field is required">
+                                                        <small class="form-control-feedback"> </small> </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="control-label"></label>
+                                                        <input type="text" name="numero" class="form-control"  data-validation-required-message="This field is required">
+                                                        <small class="form-control-feedback"> </small> </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="control-label"></label>
+                                                        <input type="text" name="registro" class="form-control"  data-validation-required-message="This field is required">
+                                                        <small class="form-control-feedback"> </small> </div>
+                                                </div>
+                                            </div>
+                                        </em>
+                                      </span>
+                                </div>
+                            </div> --}}
+
+
+
+                            {{-- <div class="form-group">
+                                <h5>Asignar hoja de ruta manualmente </h5>
+                                <div class="col-sm-4">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        <label class="custom-control-label" for="customRadio1">Si</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" checked>
+                                        <label class="custom-control-label" for="customRadio2">No</label>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    
+                                    <div id="collapseOne" class="panel-collapse collapse">
+                                        <div class="panel-heading">
+                                            <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+{{-- 
+
+<input type="radio" name="group1" value="1" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+<input type="radio" name="group1" value="2" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+<input type="radio" name="group1" value="3" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                1. What is HTML?
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                2. What is Bootstrap?
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+                <p>Bootstrap is a powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                3. What is CSS?
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">
+                <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="http://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
                             {{-- <div class="form-group">
                                 <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -297,10 +418,30 @@
                             <div class="form-group">
                                 <h5>Fecha CITE <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="date" name="fecha_cite" class="form-control col-md-4" required data-validation-required-message="This field is required" value="{{ date('Y-m-d') }}">
+                                    <input type="date" name="fecha_cite" class="form-control col-md-4" required data-validation-required-message="This field is required">
                                 </div>
                                 {{-- <div class="form-control-feedback"><small>Add <code>maxlength='10'</code> attribute for maximum number of characters to accept. </small></div> --}}
                             </div>
+
+                            
+
+                            {{-- <span class="unit done">
+                                <input type="text" id="" name="" class="input1" value="" style="width:230px">
+                                <em>cm</em>
+                                <em style="display: none;">in</em>
+                              </span>
+                              
+                              <div class="btn-group btn-group-toggle unit-toggler pull-right" data-toggle="buttons">
+                                <label class="btn btn-select cm-unit active">  
+                                  <input type="radio" name="wrist" id="wrist1" autocomplete="off" checked /> Si  
+                                </label>
+                              
+                                <label class="btn btn-select">
+                                  <input type="radio" name="wrist" id="wrist2" autocomplete="off" /> No
+                                </label>
+                              </div> --}}
+
+
                             {{-- <div class="form-group">
                                 <h5>Autor <span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -324,7 +465,7 @@
                             <div class="form-group">
                                 <h5>Institución Destinatario <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="inst_des" class="form-control" required data-validation-required-message="This field is required" >
+                                    <input type="text" name="institucion_des" class="form-control" required data-validation-required-message="This field is required" >
                                 </div>
                                 {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
                             </div>
@@ -338,10 +479,10 @@
                             <div class="form-group">
                                 <h5>Fecha Recepcion<span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="date" name="fecha_rec" class="form-control col-md-4" required data-validation-required-message="This field is required" value="{{ date('Y-m-d') }}">
+                                    <input type="date" name="fecha_recepcion" class="form-control col-md-4" required data-validation-required-message="This field is required">
                                 </div>
                                 <div class="form-control-feedback">
-                                    @error('fecha_rec')
+                                    @error('fecha_recepcion')
                                         <br>
                                             <small>*{{$message}}</small>
                                         <br>
@@ -351,7 +492,7 @@
                             <div class="form-group">
                                 <h5>Fecha Entrega<span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="date" name="fecha_entrega" class="form-control col-md-4" required data-validation-required-message="This field is required" value="{{ date('Y-m-d') }}">
+                                    <input type="date" name="fecha_entrega" class="form-control col-md-4" required data-validation-required-message="This field is required">
                                 </div>
                                 <div class="form-control-feedback">
                                     @error('fecha_entrega')
@@ -374,3 +515,11 @@
     </div>
    
 @stop
+
+@section('scripts')
+    <script>
+        $('.unit-toggler input').change(function() {
+        $('.unit em').toggle();
+        });
+    </script>
+@endsection

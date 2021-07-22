@@ -8,6 +8,7 @@ class Documento extends Model
 {
     protected $fillable = [
         'nombre',
+        'hoja_ruta',
     ];
 
     //Relacion uno a muchos - una categoria puede asignarse a varias notas

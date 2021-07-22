@@ -40,9 +40,9 @@ class CreateNotasTable extends Migration
             //$table->string('autor', 50);
             $table->string('nombre_des', 100);
             $table->string('cargo_des', 100);
-            $table->string('inst_des', 100);
+            $table->string('institucion_des', 100);
             $table->string('referencia', 250);
-            $table->date('fecha_rec');
+            $table->date('fecha_recepcion');
 
             $table->timestamps();
         });

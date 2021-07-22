@@ -40,7 +40,8 @@ Route::post('/notas', 'NotaController@store')->name('notas.store');
 Route::get('notas/{nota}/edit', 'NotaController@edit')->name('modifica_nota');
 Route::put('notas/{nota}', 'NotaController@update')->name('notas.update');
 
-Route::get('notas/{nota}', 'NotaController@show')->name('notas.show');
+// Route::get('notas/{nota}', 'NotaController@show')->name('notas.show');
+Route::get('notas/{nota}', 'NotaController@show')->name('show_nota');
 
 Route::post('/archivos', 'ArchivoController@store')->name('archivos.store');
 

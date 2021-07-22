@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Area;
 use App\Documento;
-use Illuminate\Http\Request;
+use App\HojaRuta;
 use App\Nota;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class NotaController extends Controller
@@ -16,9 +17,9 @@ class NotaController extends Controller
     }
 
     public function index(){
-        
+
         $notas = Nota::orderBy('Id','desc')->paginate();
-    
+
         return view('notas.listado', compact('notas'));
     }
 
@@ -51,35 +52,17 @@ class NotaController extends Controller
         //return $request->file('adjdoc')->store('public/documentos');
         $nota = new Nota();
 
+        $nota->id_user = Auth::user()->id;
         $nota->id_documento = $request->id_documento;
         $nota->id_area = $request->id_area;
-        
-        $nota->cod_hr = 46;
 
-        $nro_hr = Nota::where('gestion', date('Y'))
-                        ->whereNotNull('nro_hr')
-                        ->max('nro_hr');
-        dd($nro_hr);
-        // Preguntamos si $nro_hr esta definido
-        if($nro_hr){
-            // Si esta definido se incrementa en 1
-            $nro_hr = $nro_hr + 1;
-        }else{
-            // Si no esta definido, su valor sera 1
-            $nro_hr = 1;
-        }
-        dd($nro_hr);
-        $nota->nro_hr = $nro_hr;
-
-        $nota->reg_hr = "D";
-        
         $nota->gestion = date('Y');
         $nota->fecha_cite = $request->fecha_cite;
 
         // SELECT max(nro_cite)
         // FROM nota
         // WHERE nota.id_area = id_area AND nota.id_documento = id_documento
-        
+
         // Hallamos el maximo valor en nota_cite donde id_area sea igual a nota.id_area y id_documento sea igual a nota.id_documento
         $nro_cite = Nota::where('id_area', $request->id_area)
                         ->where('id_documento', $request->id_documento)
@@ -96,22 +79,98 @@ class NotaController extends Controller
         $nota->nro_cite = $nro_cite;
         // $nota->nro_cite = $request->nro_cite;
 
-        $nota->autor = Auth::user()->name;
         $nota->nombre_des = $request->nombre_des;
         $nota->cargo_des = $request->cargo_des;
-        $nota->inst_des = $request->inst_des;
+        $nota->institucion_des = $request->institucion_des;
         $nota->referencia = $request->referencia;
-        $nota->fecha_rec = $request->fecha_rec;
+        $nota->fecha_recepcion = $request->fecha_recepcion;
         $nota->fecha_entrega = $request->fecha_entrega;
         //dd($nota);
         $nota->save();
+        //dd($nota->id);
 
+        //SI ES NOTA EXTERNA, NOTA INTERNA, INFORME O MEMORANDUM
+        if($nota->id_documento == 1 || $nota->id_documento == 2 || $nota->id_documento == 3 || $nota->id_documento == 4 ){
+
+            //SI ASIGNAR HOJA RUTA MANUALMENTE ESTA EN CHECK NO
+            $hojaruta = new HojaRuta();
+            $hojaruta->id_nota = $nota->id;
+
+            //Si es DGSGIF
+            if($nota->id_area == 1){
+                $codigo = 46;
+            }else{
+                if($nota->id_area == 2 || $nota->id_area == 4){
+                    // Si es UISS o UIT
+                    $codigo = 123;
+                }else{
+                    // Si es USI
+                    $codigo = 107;
+                }
+            }
+
+            $hojaruta->codigo = $codigo;
+            //dd($codigo);
+            // SELECT max(numero)
+            // FROM hoja_rutas
+            // WHERE hoja_rutas.id_area = id_area AND nota.id_documento = id_documento
+
+            // Hallamos el maximo valor en nota_cite donde id_area sea igual a nota.id_area y id_documento sea igual a nota.id_documento
+            $numero = HojaRuta::where('id_nota', $nota->id)
+                            //->where('codigo', $codigo)
+                            ->max('numero');
+            //dd($numero);
+            // Preguntamos si $nro_cite esta definido
+            if($numero){
+                // Si esta definido se incrementa en 1
+                $numero = $numero + 1;
+            }else{
+                // Si no esta definido, su valor sera 1
+                $numero = 1;
+            }
+
+            $hojaruta->numero = $numero;
+            //dd($hojaruta->numero);
+
+
+            //SI ES NOTA EXTERNA
+            if($nota->id_documento == 1){
+                $registro = "R";
+            }else{//SI ES NOTA INTERNA
+                $registro = "D";
+            }
+            //dd($registro);
+            $hojaruta->registro = $registro;
+
+            $hojaruta->gestion = date('Y');
+            $hojaruta->save();
+        }
         //return redirect()->route('notas.show', $nota);
         return redirect()->route('listado_nota');
+
+        // $nota->cod_hr = 46;
+
+        // $nro_hr = Nota::where('gestion', date('Y'))
+        //                 ->whereNotNull('nro_hr')
+        //                 ->max('nro_hr');
+        // //dd($nro_hr);
+        // // Preguntamos si $nro_hr esta definido
+        // if($nro_hr){
+        //     // Si esta definido se incrementa en 1
+        //     $nro_hr = $nro_hr + 1;
+        // }else{
+        //     // Si no esta definido, su valor sera 1
+        //     $nro_hr = 1;
+        // }
+        // //dd($nro_hr);
+        // $nota->nro_hr = $nro_hr;
+
+        // $nota->reg_hr = "D";
+
     }
 
     public function show(Nota $nota){
-        
+
         //$nota = Nota::find($id);
 
         return view('notas.show', compact('nota'));
@@ -150,9 +209,9 @@ class NotaController extends Controller
         //$nota->autor = $request->autor;
         $nota->nombre_des = $request->nombre_des;
         $nota->cargo_des = $request->cargo_des;
-        $nota->inst_des = $request->inst_des;
+        $nota->institucion_des = $request->institucion_des;
         $nota->referencia = $request->referencia;
-        $nota->fecha_rec = $request->fecha_rec;
+        $nota->fecha_recepcion = $request->fecha_recepcion;
         $nota->fecha_entrega = $request->fecha_entrega;
 
         $nota->save();
