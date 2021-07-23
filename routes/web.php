@@ -27,6 +27,7 @@ Route::get('/home', 'HomeController@home')->name('home');
 
 
 Route::get('/notas/listado', 'NotaController@index')->name('listado_nota');
+Route::get('/notas/listado_in/{documento}', 'NotaController@index2')->name('listado_nota_in');
 
 Route::get('/notas/create', 'NotaController@create')->name('create_nota');
 

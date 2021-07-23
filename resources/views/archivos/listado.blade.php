@@ -31,20 +31,20 @@
                                     <th>Descargar archivo</th>
                                 </tr>
                             </thead>
-                            <tfoot>
+                            {{-- <tfoot>
                                 <tr>
                                     <th>Titulo Documento</th>
-                                    {{-- <th>URL</th> --}}
+                                    <th>URL</th>
                                     <th>Descargar archivo</th>
                                 </tr>
-                            </tfoot>
+                            </tfoot> --}}
 
                             <tbody> 
                                 @foreach ($archivos as $archivo)
                                     <tr>
                                         {{-- <td>{{$archivo->id}}</td> --}}
                                         <td>{{$archivo->titulo}}</td>
-                                        <td><a href="{{route('descarga_archivo', $archivo->uuid)}}">{{$archivo->url}}</a> </td>
+                                        <td><a href="{{ route('descarga_archivo', $archivo->uuid) }}">{{$archivo->url}}</a> </td>
                                     </tr>       
                                 @endforeach
                                                     
@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
@@ -476,7 +476,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
     
 

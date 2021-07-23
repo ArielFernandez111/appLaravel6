@@ -19,8 +19,15 @@ class NotaController extends Controller
     public function index(){
 
         $notas = Nota::orderBy('Id','desc')->paginate();
+        $documentos = Documento::get();
+        return view('notas.listado', compact('notas', 'documentos'));
+    }
 
-        return view('notas.listado', compact('notas'));
+    public function index2($documento){
+
+        $notas = Nota::where('id_documento', $documento)->orderBy('Id','desc')->paginate();
+        $documentos = Documento::get();
+        return view('notas.listado', compact('notas', 'documentos'));
     }
 
     /*public function create(){
@@ -95,7 +102,7 @@ class NotaController extends Controller
             //SI ASIGNAR HOJA RUTA MANUALMENTE ESTA EN CHECK NO
             $hojaruta = new HojaRuta();
             $hojaruta->id_nota = $nota->id;
-
+            // dd($nota->id_area);
             //Si es DGSGIF
             if($nota->id_area == 1){
                 $codigo = 46;
@@ -111,13 +118,23 @@ class NotaController extends Controller
 
             $hojaruta->codigo = $codigo;
             //dd($codigo);
+            
+            //SI ES NOTA EXTERNA
+            if($nota->id_documento == 1){
+                $registro = "R";
+            }else{//SI ES NOTA INTERNA
+                $registro = "D";
+            }
+            //dd($registro);
+            $hojaruta->registro = $registro;
+
             // SELECT max(numero)
             // FROM hoja_rutas
-            // WHERE hoja_rutas.id_area = id_area AND nota.id_documento = id_documento
+            // WHERE hoja_rutas.codigo = codigo AND nota.id_documento = id_documento
 
             // Hallamos el maximo valor en nota_cite donde id_area sea igual a nota.id_area y id_documento sea igual a nota.id_documento
-            $numero = HojaRuta::where('id_nota', $nota->id)
-                            //->where('codigo', $codigo)
+            $numero = HojaRuta::where('codigo', $codigo)
+                            ->where('registro', $registro)
                             ->max('numero');
             //dd($numero);
             // Preguntamos si $nro_cite esta definido
@@ -131,16 +148,6 @@ class NotaController extends Controller
 
             $hojaruta->numero = $numero;
             //dd($hojaruta->numero);
-
-
-            //SI ES NOTA EXTERNA
-            if($nota->id_documento == 1){
-                $registro = "R";
-            }else{//SI ES NOTA INTERNA
-                $registro = "D";
-            }
-            //dd($registro);
-            $hojaruta->registro = $registro;
 
             $hojaruta->gestion = date('Y');
             $hojaruta->save();
@@ -202,9 +209,9 @@ class NotaController extends Controller
         ]);*/
         //dd($request-session()$request->session()->get('key', 'default');)
 
-        $nota->cod_hr = $request->cod_hr;
-        $nota->nro_hr = $request->nro_hr;
-        $nota->reg_hr = $request->reg_hr;
+        // $nota->cod_hr = $request->cod_hr;
+        // $nota->nro_hr = $request->nro_hr;
+        // $nota->reg_hr = $request->reg_hr;
         $nota->fecha_cite = $request->fecha_cite;
         //$nota->autor = $request->autor;
         $nota->nombre_des = $request->nombre_des;
