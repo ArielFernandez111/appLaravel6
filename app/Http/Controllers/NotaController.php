@@ -27,6 +27,7 @@ class NotaController extends Controller
 
         $notas = Nota::where('id_documento', $documento)->orderBy('Id','desc')->paginate();
         $documentos = Documento::get();
+        // dd($documentos);
         return view('notas.listado', compact('notas', 'documentos'));
     }
 
