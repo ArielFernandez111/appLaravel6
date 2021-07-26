@@ -47,3 +47,5 @@ Route::get('notas/{nota}', 'NotaController@show')->name('show_nota');
 Route::post('/archivos', 'ArchivoController@store')->name('archivos.store');
 
 Route::get('archivos/{uuid}/download', 'ArchivoController@download')->name('descarga_archivo');
+
+Route::get('datatable/notas', 'DatatableController@nota')->name('datatable_nota');

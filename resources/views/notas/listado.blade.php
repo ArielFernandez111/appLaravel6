@@ -1,6 +1,12 @@
 @extends('app')
 
 
+@section('css')
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
+@endsection
+
 @section('content')
 
 <!--div class="container">
@@ -32,8 +38,8 @@
   </div> --}}
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
+    {{-- <div class="row">
+        <div class="col-12"> --}}
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Listado de Notas</h2>
@@ -51,10 +57,11 @@
                             </li>
                         @endforeach
                       </ul>
-                    <div class="table-responsive m-t-40">
-                        <table id="example23"
+                    {{-- <div class="table-responsive m-t-40"> --}}
+                        <table id="dtnotas"
                             class="display nowrap table table-hover table-striped table-bordered "
                             cellspacing="0" width="100%">
+                        {{-- <table id="dtnotas" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%"> --}}
                             <thead>
                                 <tr>
                                     <th><h6 class="font-weight-bold">Documento</h6></th>
@@ -62,11 +69,11 @@
                                     <th><h6 class="font-weight-bold">Hoja Ruta</h6></th>
                                     <th><h6 class="font-weight-bold">Fecha Asig. CITE</h6></th>
                                     <th><h6 class="font-weight-bold">Nro. CITE</h6></th>
-                                    <th><h6 class="font-weight-bold">Autor</h6></th>
+                                    {{-- <th><h6 class="font-weight-bold">Autor</h6></th> --}}
                                     <th><h6 class="font-weight-bold">Destinatario</h6></th>
                                     {{-- <th><h6 class="font-weight-bold">Cargo</h6></th>
                                     <th><h6 class="font-weight-bold">Institucion</h6></th> --}}
-                                    <th><h6 class="font-weight-bold">Referencia</h6></th>
+                                    {{-- <th><h6 class="font-weight-bold">Referencia</h6></th> --}}
                                     <th><h6 class="font-weight-bold">Fecha Recepcion</h6></th>
                                     <th><h6 class="font-weight-bold">Accion</h6></th>
                                 </tr>
@@ -104,7 +111,7 @@
                                                 $area = App\Area::find($nota->id_area);
 
                                             @endphp
-                                            {{ $area->nombre }}
+                                            {{ $area->sigla }}
                                             </h6>
                                         </td>
                                         <td>
@@ -141,20 +148,20 @@
                                             {{$nota->nro_cite}}/{{$nota->gestion}}
                                         
                                         </h6></td>
-                                        <td>
+                                        {{-- <td>
                                             <h6>
                                             @php
                                                 $user = App\User::find($nota->id_user);
 
                                             @endphp
-                                            {{ $user->name }}
+                                            {{ $user->username }}
                                             </h6>
-                                        </td>
+                                        </td> --}}
                                         <td><h6>{{ $nota->nombre_des }}</h6></td>
                                         {{-- <td><h6>{{ $nota->cargo_des }}</h6></td>
                                         <td><h6>{{ $nota->institucion_des }}</h6></td> --}}
                                         <td><h6>{{ $nota->referencia }}</h6></td>
-                                        <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_recepcion)) }}</h6></td>
+                                        {{-- <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_recepcion)) }}</h6></td> --}}
 
                                         <td>
                                             <h6>
@@ -169,11 +176,11 @@
                                                     
                             </tbody>
                         </table>
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </div>
-        </div>
-    </div>
+        {{-- </div>
+    </div> --}}
 
     {{-- <div class="row">
         <div class="col-md-12">
@@ -273,7 +280,7 @@
         </div>
     </div> --}}
 
-    <div>
+    {{-- <div>
         <ul class="nav nav-tabs" role="tablist">
             <li class="active">
                 <a href="#tab-table1" data-toggle="tab">Table 1</a>
@@ -312,7 +319,7 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 </div>
 
@@ -321,25 +328,50 @@
 @stop
 
 @section('scripts')
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
     <script>
     // $(document).ready( function () {
-    //     $('#dtnotas').DataTable();
+        $('#dtnotas').DataTable({
+            // "ajax": "{{ route('datatable_nota') }}",
+            // "columns": [
+            //     {data: 'id'},
+            //     {data: 'fecha_cite'},
+            //     {data: 'nro_cite'},
+            // ]
+            responsive: true,
+            //autoWidth: false,
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No se encontró ningún registro",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No se encontraron registros",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "search": "Buscar:",
+                "paginate": {
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        });
     // } );
-    $(document).ready(function() {
-        $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
-            $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
-        } );
+    // $(document).ready(function() {
+    //     $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
+    //         $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+    //     } );
         
-        $('table.table').DataTable( {
-            ajax:           '../ajax/data/arrays.txt',
-            scrollY:        200,
-            scrollCollapse: true,
-            paging:         false
-        } );
+    //     $('table.table').DataTable( {
+    //         ajax:           '../ajax/data/arrays.txt',
+    //         scrollY:        200,
+    //         scrollCollapse: true,
+    //         paging:         false
+    //     } );
     
-        // Apply a search to the second table for the demo
-        $('#myTable2').DataTable().search( 'New York' ).draw();
-    } );
+    //     // Apply a search to the second table for the demo
+    //     $('#myTable2').DataTable().search( 'New York' ).draw();
+    // } );
 
 
     </script>
