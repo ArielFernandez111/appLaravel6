@@ -218,17 +218,6 @@
                             @csrf
 
                             <div class="form-group">
-                                <h5>Tipo Documento <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <select name="id_documento" id="id_documento" required class="form-control col-sm-7">
-                                        <option value="">Selecciona el tipo de documento</option>
-                                        @foreach ($documentos as $documento)
-                                            <option value="{{ $documento->id }}">{{ $documento->nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <h5>Área <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <select name="id_area" id="id_area" required class="form-control col-sm-7">
@@ -240,6 +229,79 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <h5>Tipo Documento <span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <select name="id_documento" id="id_documento" required class="form-control col-sm-7">
+                                        <option value="">Selecciona el tipo de documento</option>
+                                        @foreach ($documentos as $documento)
+                                            <option value="{{ $documento->id }}">{{ $documento->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- <div id="id_hojaruta" class="form-group" style="display: none">
+                                <h5>Asignar hoja de ruta manualmente </h5>
+                                <div class="col-sm-4">
+                                    <div class="btn-group btn-group-toggle unit-toggler pull-right" data-toggle="buttons">
+                                        <label class="btn btn-select cm-unit active">  
+                                          <input type="radio" name="hojaruta" id="hojaruta1" autocomplete="off" /> Si  
+                                        </label>
+
+                                        <label class="btn btn-select">
+                                          <input type="radio" name="hojaruta" id="hojaruta2" autocomplete="off" checked/> No
+                                        </label>
+                                      </div>
+                                </div>
+                            </div> --}}
+
+                            <div id="id_hojaruta" class="form-group" style="display: none">
+                                <h5>
+                                    <span id="txt_hojaruta1" style="display: none">Asignar hoja de ruta manualmente (Si elige NO, se asignará un número de hoja de ruta de forma automática)</span>
+                                    <span id="txt_hojaruta2" style="display: none">Tiene hoja de ruta </span>
+                                </h5>
+                                {{-- <div class="col-sm-4">
+                                    <div class="btn-group btn-group-toggle unit-toggler pull-right" data-toggle="buttons"> --}}
+                                        <label for="chkYes" >  
+                                          <input type="radio" name="hojaruta" id="chkYes" /> Si  
+                                        </label>
+
+                                        <label for="chkNo" >
+                                          <input type="radio" name="hojaruta" id="chkNo" checked/> No 
+                                        </label>
+                                      {{-- </div>
+                                </div> --}}
+                            </div>
+
+                            <div class="form-group" id="id_codigohr" style="display: none">
+                                <h5>Hoja de Ruta </h5>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label><h6>Código <span class="text-danger">*</span></h6></label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label><h6>Número <span class="text-danger">*</span></h6></label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label><h6>Registro <span class="text-danger">*</span></h6></label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                            </div>
+
+
                             {{-- <div class="form-group">
                                 <h5>Asignar hoja de ruta manualmente </h5>
                                 <div class="col-sm-4">
@@ -247,7 +309,7 @@
                                         <label class="btn btn-select cm-unit active">  
                                           <input type="radio" name="hojaruta" id="hojaruta1" autocomplete="off" /> Si  
                                         </label>
-                                      
+
                                         <label class="btn btn-select">
                                           <input type="radio" name="hojaruta" id="hojaruta2" autocomplete="off" checked/> No
                                         </label>
@@ -287,185 +349,32 @@
                                 </div>
                             </div> --}}
 
-
-
-                            {{-- <div class="form-group">
-                                <h5>Asignar hoja de ruta manualmente </h5>
-                                <div class="col-sm-4">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                        <label class="custom-control-label" for="customRadio1">Si</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" checked>
-                                        <label class="custom-control-label" for="customRadio2">No</label>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            {{-- <div class="panel-group" id="accordion">
-                                <div class="panel panel-default">
-                                    
-                                    <div id="collapseOne" class="panel-collapse collapse">
-                                        <div class="panel-heading">
-                                            <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
-                                        </div>
-                                        <div class="panel-body">
-                                            <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-{{-- 
-
-<input type="radio" name="group1" value="1" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-<input type="radio" name="group1" value="2" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-<input type="radio" name="group1" value="3" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-
-<div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                1. What is HTML?
-            </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
-            <div class="panel-body">
-                <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                2. What is Bootstrap?
-            </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">
-                <p>Bootstrap is a powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                3. What is CSS?
-            </h4>
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">
-                <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="http://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
-                            {{-- <div class="form-group">
-                                <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="cod_hr" class="form-control col-sm-1" required data-validation-required-message="This field is required">
-                                    <input type="text" name="nro_hr" class="form-control col-sm-1" required data-validation-required-message="This field is required">
-                                    <input type="text" name="reg_hr" class="form-control col-sm-1" required data-validation-required-message="This field is required">
-                                </div>
-                            </div> --}}
-
-                            {{-- <div class="row pt-3">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <h5>Hoja de Ruta <span class="text-danger">*</span></h5>
-                                        <input type="text" name="cod_hr" class="form-control" required data-validation-required-message="This field is required">
-                                        <small class="form-control-feedback"> </small> </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label class="control-label"></label>
-                                        <input type="text" name="nro_hr" class="form-control" required data-validation-required-message="This field is required">
-                                        <small class="form-control-feedback"> </small> </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label class="control-label"></label>
-                                        <input type="text" name="reg_hr" class="form-control" required data-validation-required-message="This field is required">
-                                        <small class="form-control-feedback"> </small> </div>
-                                </div>
-                            </div> --}}
-
-                            {{-- <div class="form-row">
-                                <div class="form-group col-md-2">
-                                  <label for="inputCity">Hoja de Ruta</label>
-                                  <input type="text" name="cod_hr" required data-validation-required-message="This field is required">
-                                </div>
-                                <div class="form-group col-md-2">
-                                  <label for="inputState">State</label>
-                                  <input type="text" name="nro_hr" required data-validation-required-message="This field is required">
-                                </div>
-                                <div class="form-group col-md-2">
-                                  <label for="inputZip">Zip</label>
-                                  <input type="text" name="reg_hr" required data-validation-required-message="This field is required">
-                                </div>
-                              </div>
-
-                              <div class="form-group">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                                  <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                  </label>
-                                </div>
-                              </div> --}}
-
-
                             <div class="form-group">
-                                <h5>Fecha CITE <span class="text-danger">*</span></h5>
+                                <h5>Fecha Asignación CITE <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="date" name="fecha_cite" class="form-control col-md-4" required data-validation-required-message="This field is required">
                                 </div>
                                 {{-- <div class="form-control-feedback"><small>Add <code>maxlength='10'</code> attribute for maximum number of characters to accept. </small></div> --}}
                             </div>
 
-                            
-
-                            {{-- <span class="unit done">
-                                <input type="text" id="" name="" class="input1" value="" style="width:230px">
-                                <em>cm</em>
-                                <em style="display: none;">in</em>
-                              </span>
-                              
-                              <div class="btn-group btn-group-toggle unit-toggler pull-right" data-toggle="buttons">
-                                <label class="btn btn-select cm-unit active">  
-                                  <input type="radio" name="wrist" id="wrist1" autocomplete="off" checked /> Si  
-                                </label>
-                              
-                                <label class="btn btn-select">
-                                  <input type="radio" name="wrist" id="wrist2" autocomplete="off" /> No
-                                </label>
-                              </div> --}}
-
-
-                            {{-- <div class="form-group">
-                                <h5>Autor <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="autor" class="form-control" required data-validation-required-message="This field is required" >
-                                </div>
-                            </div> --}}
                             <div class="form-group">
                                 <h5>Nombre Destinatario <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="nombre_des" class="form-control" required data-validation-required-message="This field is required" >
+                                    <input type="text" name="nombre_des" class="form-control col-md-7" required data-validation-required-message="This field is required" >
                                 </div>
                                 {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
                             </div>
                             <div class="form-group">
                                 <h5>Cargo Destinatario <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="cargo_des" class="form-control" required data-validation-required-message="This field is required" >
+                                    <input type="text" name="cargo_des" class="form-control col-md-7" required data-validation-required-message="This field is required" >
                                 </div>
                                 {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
                             </div>
                             <div class="form-group">
                                 <h5>Institución Destinatario <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="institucion_des" class="form-control" required data-validation-required-message="This field is required" >
+                                    <input type="text" name="institucion_des" class="form-control col-md-7" required data-validation-required-message="This field is required" >
                                 </div>
                                 {{-- <div class="form-control-feedback"><small>Add <code>minlength="6"</code> attribute for minimum number of characters to accept.</small></div> --}}
                             </div>
@@ -517,9 +426,45 @@
 @stop
 
 @section('scripts')
-    <script>
+
+{{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> --}}
+<script type="text/javascript">
+    $(function () {
+        $("#id_documento").change(function () {
+            if ($(this).val() == "1" || $(this).val() == "2" || $(this).val() == "3") {
+                $("#id_hojaruta").show();
+                $("#txt_hojaruta1").show();
+                $("#txt_hojaruta2").hide();
+            } else {
+                if ($(this).val() == "4"){
+                    $("#id_hojaruta").show();
+                    $("#txt_hojaruta1").hide();
+                    $("#txt_hojaruta2").show();
+                    
+                    $("#chkNo").prop("checked", true);
+                    $("#id_codigohr").hide();
+                }else{
+                    $("#id_hojaruta").hide();
+                    $("#id_codigohr").hide();
+                    $("#chkNo").prop("checked", true);
+                }
+            }
+        });
+
+        $("input[name='hojaruta']").click(function () {
+            if ($("#chkYes").is(":checked")) {
+                $("#id_codigohr").show();
+            } else {
+                $("#id_codigohr").hide();
+            }
+        });
+    });
+</script>
+
+
+    {{-- <script>
         $('.unit-toggler input').change(function() {
         $('.unit em').toggle();
         });
-    </script>
+    </script> --}}
 @endsection
