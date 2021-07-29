@@ -36,12 +36,17 @@
                             @endphp
                             {{ $area->nombre }}
                         </p>
+                        
+                            {{-- @if ( $nota->id_documento === 1 || $nota->id_documento === 2 || $nota->id_documento === 3 || $nota->id_documento === 4)  
+                                {{ $nota->hojaruta->codigo }}-{{ $nota->hojaruta->numero }}-{{ $nota->hojaruta->registro }}
+                            @endif --}}
+                        @if ($nota->hojaruta)
                         <h4>Hoja de Ruta</h4>
                         <p>
-                            @if ( $nota->id_documento === 1 || $nota->id_documento === 2 || $nota->id_documento === 3 || $nota->id_documento === 4)  
-                                {{ $nota->hojaruta->codigo }}-{{ $nota->hojaruta->numero }}-{{ $nota->hojaruta->registro }}
-                            @endif
+                            {{ $nota->hojaruta->codigo }}-{{ $nota->hojaruta->numero }}-{{ $nota->hojaruta->registro }}
                         </p>
+                        @endif
+                        
                         <h4>Número CITE</h4>
                         <p>
                             @if ( $nota->id_area === 1)

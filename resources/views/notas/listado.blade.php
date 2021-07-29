@@ -116,7 +116,10 @@
                                         </td>
                                         <td>
                                             <h6>
-                                                @if ( $nota->id_documento === 1 || $nota->id_documento === 2 || $nota->id_documento === 3 || $nota->id_documento === 4)  
+                                                {{-- @if ( $nota->id_documento === 1 || $nota->id_documento === 2 || $nota->id_documento === 3 || $nota->id_documento === 4)  
+                                                    {{ $nota->hojaruta->codigo }}-{{ $nota->hojaruta->numero }}-{{ $nota->hojaruta->registro }}
+                                                @endif --}}
+                                                @if ($nota->hojaruta)
                                                     {{ $nota->hojaruta->codigo }}-{{ $nota->hojaruta->numero }}-{{ $nota->hojaruta->registro }}
                                                 @endif
                                             {{-- @php

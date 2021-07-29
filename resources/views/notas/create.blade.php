@@ -256,6 +256,10 @@
                                 </div>
                             </div> --}}
 
+                                {{-- <input type="radio" name="gender" id="genderM" value="M" style="display: none"/> M  
+
+                                <input type="radio" name="gender" id="genderF" checked value="F" style="display: none"/> F  --}}
+
                             <div id="id_hojaruta" class="form-group" style="display: none">
                                 <h5>
                                     <span id="txt_hojaruta1" style="display: none">Asignar hoja de ruta manualmente (Si elige NO, se asignará un número de hoja de ruta de forma automática)</span>
@@ -264,11 +268,11 @@
                                 {{-- <div class="col-sm-4">
                                     <div class="btn-group btn-group-toggle unit-toggler pull-right" data-toggle="buttons"> --}}
                                         <label for="chkYes" >  
-                                          <input type="radio" name="hojaruta" id="chkYes" /> Si  
+                                          <input type="radio" name="hojaruta" id="chkYes" value="S" /> Si  
                                         </label>
 
                                         <label for="chkNo" >
-                                          <input type="radio" name="hojaruta" id="chkNo" checked/> No 
+                                          <input type="radio" name="hojaruta" id="chkNo" checked value="N"/> No 
                                         </label>
                                       {{-- </div>
                                 </div> --}}
@@ -280,21 +284,21 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label><h6>Código <span class="text-danger">*</span></h6></label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" value="" name="codigo_hr">
                                         </div>
                                     </div>
                                     <!--/span-->
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label><h6>Número <span class="text-danger">*</span></h6></label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" value="" name="numero_hr">
                                         </div>
                                     </div>
                                     <!--/span-->
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label><h6>Registro <span class="text-danger">*</span></h6></label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" value="" name="registro_hr">
                                         </div>
                                     </div>
                                     <!--/span-->
