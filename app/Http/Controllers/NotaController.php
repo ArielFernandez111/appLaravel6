@@ -128,11 +128,12 @@ class NotaController extends Controller
                 $hojaruta->codigo = $codigo;
                 //dd($codigo);
                 //SI ES NOTA EXTERNA
-                if($nota->id_documento == 1){
-                    $registro = "R";
-                }else{//SI ES NOTA INTERNA
-                    $registro = "D";
-                }
+                // if($nota->id_documento == 1){
+                //     $registro = "R";
+                // }else{//SI ES NOTA INTERNA
+                //     $registro = "D";
+                // }
+                $registro = "D";
                 $hojaruta->registro = $registro;
 
                 // Hallamos el maximo valor en nota_cite donde id_area sea igual a nota.id_area y id_documento sea igual a nota.id_documento

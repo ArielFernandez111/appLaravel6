@@ -46,7 +46,10 @@
                             {{ $nota->hojaruta->codigo }}-{{ $nota->hojaruta->numero }}-{{ $nota->hojaruta->registro }}
                         </p>
                         @endif
-                        
+                        <h4>Fecha Asignación CITE</h4>
+                        <p>
+                            {{ date('d/m/Y', strtotime($nota->fecha_cite)) }}
+                        </p>
                         <h4>Número CITE</h4>
                         <p>
                             @if ( $nota->id_area === 1)

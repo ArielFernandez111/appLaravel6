@@ -64,18 +64,19 @@
                         {{-- <table id="dtnotas" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%"> --}}
                             <thead>
                                 <tr>
-                                    <th><h6 class="font-weight-bold">Documento</h6></th>
-                                    <th><h6 class="font-weight-bold">Area</h6></th>
-                                    <th><h6 class="font-weight-bold">Hoja Ruta</h6></th>
-                                    <th><h6 class="font-weight-bold">Fecha Asig. CITE</h6></th>
-                                    <th><h6 class="font-weight-bold">Nro. CITE</h6></th>
+                                    <th><h6 class="font-weight-bold" style="width: 90px;">Documento</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 40px;">Area</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 60px;">Hoja Ruta</h6></th>
+                                    {{-- <th><h6 class="font-weight-bold"style="width: 80px;">Fecha CITE</h6></th> --}}
+                                    <th><h6 class="font-weight-bold"style="width: 130px;">Nro. CITE</h6></th>
                                     {{-- <th><h6 class="font-weight-bold">Autor</h6></th> --}}
-                                    <th><h6 class="font-weight-bold">Destinatario</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 130px;">Destinatario</h6></th>
                                     {{-- <th><h6 class="font-weight-bold">Cargo</h6></th>
                                     <th><h6 class="font-weight-bold">Institucion</h6></th> --}}
                                     {{-- <th><h6 class="font-weight-bold">Referencia</h6></th> --}}
-                                    <th><h6 class="font-weight-bold">Fecha Recepcion</h6></th>
-                                    <th><h6 class="font-weight-bold">Accion</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 90px;">Fecha Recepcion</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 40px;">Modificar</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 40px;">Ver mas</h6></th>
                                 </tr>
                             </thead>
                             {{-- <tfoot>
@@ -97,7 +98,7 @@
                             <tbody>
                                 @foreach ($notas as $nota)
                                     <tr>
-                                        <td><h6>
+                                        <td style="width: 90px;"><h6>
                                             @php
                                                 $documento = App\Documento::find($nota->id_documento);
 
@@ -105,7 +106,7 @@
                                             {{ $documento->nombre }}
                                             </h6>
                                         </td>
-                                        <td>
+                                        <td style="width: 40px;">
                                             <h6>
                                             @php
                                                 $area = App\Area::find($nota->id_area);
@@ -114,7 +115,7 @@
                                             {{ $area->sigla }}
                                             </h6>
                                         </td>
-                                        <td>
+                                        <td style="width: 60px;">
                                             <h6>
                                                 {{-- @if ( $nota->id_documento === 1 || $nota->id_documento === 2 || $nota->id_documento === 3 || $nota->id_documento === 4)  
                                                     {{ $nota->hojaruta->codigo }}-{{ $nota->hojaruta->numero }}-{{ $nota->hojaruta->registro }}
@@ -133,8 +134,8 @@
                                                 {{-- {{ $nota->cod_hr }}-{{ $nota->nro_hr }}-{{ $nota->reg_hr }} --}}
                                             </h6>
                                         </td>
-                                        <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_cite)) }}</h6></td>
-                                        <td><h6>
+                                        {{-- <td style="width: 80px;"><h6>{{ date('d/m/Y', strtotime($nota->fecha_cite)) }}</h6></td> --}}
+                                        <td style="width: 130px;"><h6>
                                             @if ( $nota->id_area === 1)
                                                 MEFP/VPCF/DGSGIF/N°
                                             @else
@@ -160,20 +161,44 @@
                                             {{ $user->username }}
                                             </h6>
                                         </td> --}}
-                                        <td><h6>{{ $nota->nombre_des }}</h6></td>
+                                        <td style="width: 130px;"><h6>{{ $nota->nombre_des }}</h6></td>
                                         {{-- <td><h6>{{ $nota->cargo_des }}</h6></td>
                                         <td><h6>{{ $nota->institucion_des }}</h6></td> --}}
-                                        <td><h6>{{ $nota->referencia }}</h6></td>
+                                        <td style="width: 90px;"><h6>{{ $nota->fecha_recepcion }}</h6></td>
                                         {{-- <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_recepcion)) }}</h6></td> --}}
 
-                                        <td>
+                                        {{-- <td>
                                             <h6>
-                                                {{-- <button class="jsgrid-button jsgrid-edit-button" type="button" title="Edit"></button> --}}
                                                 <a href="{{route('modifica_nota',$nota)}}" class="btn btn-info">Editar</a>
                                                 <a href="{{route('show_nota',$nota)}}" class="btn btn-info">Ver</a>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                  </svg>
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                                                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+                                                  </svg>
+                                            </h6>
+                                        </td> --}}
+
+                                        <td style="width: 40px;">
+                                            <h6>
+                                                <a href="{{route('modifica_nota',$nota)}}" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                  </svg></a>
+                                            </h6>
+                                        </td  style="width: 40px;">
+                                        
+                                        <td>
+                                            <h6>
+                                                <a href="{{route('show_nota',$nota)}}" class="link-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                                                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+                                                  </svg></a>
+                                                
+                                                  
                                             </h6>
                                         </td>
-                                        
                                     </tr>       
                                 @endforeach
                                                     
