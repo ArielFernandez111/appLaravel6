@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="card-body">
-    <form class="form-horizontal form-material" method="POST" action="{{ route('login') }}">
+    <form class="form-horizontal form-material" method="POST" action="{{ route('newlogin') }}">
         @csrf
         <h3 class="box-title mb-3 text-center">Inicio de Sesión</h3>
         <br>
