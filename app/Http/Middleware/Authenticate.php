@@ -17,9 +17,9 @@ class Authenticate extends Middleware
 
     protected function redirectTo($request)
     {
-        if (! session()->get('login')) {
-            dd('no existe');
-            return redirect('/');
+        // dd(session()->get('login'));
+        if(session()->get('login') !== true){
+            return route('index');
         }
     }
 

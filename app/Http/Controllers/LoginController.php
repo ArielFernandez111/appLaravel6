@@ -13,7 +13,7 @@ class LoginController extends Controller
         if(is_null(Session::get('login'))){
             return view('auth.login');
         }else{
-            return view('home');
+            return redirect('/notas/listado');
         }
     }
 
@@ -21,7 +21,7 @@ class LoginController extends Controller
         if(Session::get('login') !== true){
             return redirect('/');
         }else{
-            return view('home');
+            return redirect('/notas/listado');
         }
     }
 
@@ -36,6 +36,7 @@ class LoginController extends Controller
                 //dd($usuario[0]->name);
                 $usuario = $usuario[0];
                 if(password_verify($password, $usuario->password)){
+                    
                     // $_SESSION['name'] = $usuario->name;
                     // $_SESSION['username'] = $usuario->username;
                     // $_SESSION['email'] = $usuario->email;
@@ -46,6 +47,7 @@ class LoginController extends Controller
                         'email' => $usuario->email,
                         'login' => true
                     ]);
+                    // dd(session()->all());
                     // dd(session()->get('login'));
                     // dd(session()->all());
                     return redirect('/notas/listado');
@@ -57,6 +59,7 @@ class LoginController extends Controller
             // Primero buscaremos si existe una coincidencia del username
             // Segunod buscaremos si existe la conincidencia del password con el username
         }catch(Exception $e){
+            dd($e);
             return redirect('/');
         }
     }

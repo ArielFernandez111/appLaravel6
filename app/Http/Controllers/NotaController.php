@@ -8,6 +8,7 @@ use App\HojaRuta;
 use App\Nota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class NotaController extends Controller
 {
