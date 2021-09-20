@@ -75,13 +75,13 @@
                             </div> --}}
 
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <h5>Fecha CITE <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="date" name="fecha_cite" class="form-control col-md-4" required data-validation-required-message="This field is required" value="{{old('fecha_cite', $nota->fecha_cite)}}">
-                                </div>
-                                {{-- <div class="form-control-feedback"><small>Add <code>maxlength='10'</code> attribute for maximum number of characters to accept. </small></div> --}}
-                            </div>
+                               </div>
+                                <div class="form-control-feedback"><small>Add <code>maxlength='10'</code> attribute for maximum number of characters to accept. </small></div>
+                            </div> --}}
                             
                             {{-- <div class="form-group">
                                 <h5>Nro CITE <span class="text-danger">*</span></h5>
@@ -138,6 +138,7 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <h5>Fecha Entrega<span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -151,7 +152,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="text-xs-right">
                                 <button type="submit" class="btn btn-primary">Actualizar Nota</button>
                                 {{-- <button type="reset" class="btn btn-inverse">Cancelar</button> --}}

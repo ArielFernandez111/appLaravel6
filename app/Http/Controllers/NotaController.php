@@ -60,13 +60,15 @@ class NotaController extends Controller
         ]);*/
         //return $request->file('adjdoc')->store('public/documentos');
         $nota = new Nota();
-        $nota->id_user = Auth::user()->id;
+        $nota->id_user = 1;//$request->session()->get('nombre');//Auth::user()->id;
+        $nota->usu_cre = $request->session()->get('nombre');//Auth::user()->id;
         $nota->id_documento = $request->id_documento;
         // $nota->hojaruta = $request->hojaruta;
         $nota->id_area = $request->id_area;
 
         $nota->gestion = date('Y');
-        $nota->fecha_cite = $request->fecha_cite;
+        //$nota->fecha_cite = $request->fecha_cite;
+        $nota->fecha_cite = date('Y-m-d H:i:s');
 
         // SELECT max(nro_cite)
         // FROM nota
@@ -93,7 +95,8 @@ class NotaController extends Controller
         $nota->institucion_des = $request->institucion_des;
         $nota->referencia = $request->referencia;
         $nota->fecha_recepcion = $request->fecha_recepcion;
-        $nota->fecha_entrega = $request->fecha_entrega;
+        //$nota->fecha_entrega = $request->fecha_entrega;
+        $nota->fecha_entrega = null;
 
         //dd($nota);
         //dd($request->all);
@@ -209,7 +212,7 @@ class NotaController extends Controller
         // $nota->cod_hr = $request->cod_hr;
         // $nota->nro_hr = $request->nro_hr;
         // $nota->reg_hr = $request->reg_hr;
-        $nota->fecha_cite = $request->fecha_cite;
+        //$nota->fecha_cite = $request->fecha_cite;
         //$nota->autor = $request->autor;
         $nota->nombre_des = $request->nombre_des;
         $nota->cargo_des = $request->cargo_des;

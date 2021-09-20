@@ -69,11 +69,11 @@
                         </p>
                         <h4>Autor</h4>
                         <p>
-                            @php
+                            {{-- @php
                                 $user = App\User::find($nota->id_user);
-
                             @endphp
-                            {{ $user->name }}
+                            {{ $user->name }} --}}
+                            {{ $nota->usu_cre }}
                         </p>
                         <h4>Nombre Destinatario</h4>
                         <p>

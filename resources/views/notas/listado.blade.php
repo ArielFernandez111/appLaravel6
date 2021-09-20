@@ -63,19 +63,19 @@
                         {{-- <table id="dtnotas" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%"> --}}
                             <thead>
                                 <tr>
-                                    <th><h6 class="font-weight-bold" style="width: 90px;">Documento</h6></th>
-                                    <th><h6 class="font-weight-bold"style="width: 40px;">Area</h6></th>
-                                    <th><h6 class="font-weight-bold"style="width: 60px;">Hoja Ruta</h6></th>
+                                    <th><h6 class="font-weight-bold" style="width: 15%;">Documento</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 10%;">Area</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 15%;">Hoja Ruta</h6></th>
                                     {{-- <th><h6 class="font-weight-bold"style="width: 80px;">Fecha CITE</h6></th> --}}
-                                    <th><h6 class="font-weight-bold"style="width: 130px;">Nro. CITE</h6></th>
-                                    {{-- <th><h6 class="font-weight-bold">Autor</h6></th> --}}
-                                    <th><h6 class="font-weight-bold"style="width: 130px;">Destinatario</h6></th>
+                                    <th><h6 class="font-weight-bold" style="width: 25%;">Nro. CITE</h6></th>
+                                    <th><h6 class="font-weight-bold" style="width: 10%;">Autor</h6></th>
+                                    {{-- <th><h6 class="font-weight-bold"style="width: 130px;">Destinatario</h6></th> --}}
                                     {{-- <th><h6 class="font-weight-bold">Cargo</h6></th>
                                     <th><h6 class="font-weight-bold">Institucion</h6></th> --}}
                                     {{-- <th><h6 class="font-weight-bold">Referencia</h6></th> --}}
-                                    <th><h6 class="font-weight-bold"style="width: 90px;">Fecha Recepcion</h6></th>
-                                    <th><h6 class="font-weight-bold"style="width: 40px;">Modificar</h6></th>
-                                    <th><h6 class="font-weight-bold"style="width: 40px;">Ver mas</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 15%">Fecha Recepcion</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 5%;">Modificar</h6></th>
+                                    <th><h6 class="font-weight-bold"style="width: 5%;">Ver mas</h6></th>
                                 </tr>
                             </thead>
                             {{-- <tfoot>
@@ -97,7 +97,7 @@
                             <tbody>
                                 @foreach ($notas as $nota)
                                     <tr>
-                                        <td style="width: 90px;"><h6>
+                                        <td style="width: 15%;"><h6>
                                             @php
                                                 $documento = App\Documento::find($nota->id_documento);
 
@@ -105,7 +105,7 @@
                                             {{ $documento->nombre }}
                                             </h6>
                                         </td>
-                                        <td style="width: 40px;">
+                                        <td style="width: 10%;">
                                             <h6>
                                             @php
                                                 $area = App\Area::find($nota->id_area);
@@ -114,7 +114,7 @@
                                             {{ $area->sigla }}
                                             </h6>
                                         </td>
-                                        <td style="width: 60px;">
+                                        <td style="width: 15%;">
                                             <h6>
                                                 {{-- @if ( $nota->id_documento === 1 || $nota->id_documento === 2 || $nota->id_documento === 3 || $nota->id_documento === 4)  
                                                     {{ $nota->hojaruta->codigo }}-{{ $nota->hojaruta->numero }}-{{ $nota->hojaruta->registro }}
@@ -134,7 +134,7 @@
                                             </h6>
                                         </td>
                                         {{-- <td style="width: 80px;"><h6>{{ date('d/m/Y', strtotime($nota->fecha_cite)) }}</h6></td> --}}
-                                        <td style="width: 130px;"><h6>
+                                        <td style="width: 25%;"><h6>
                                             @if ( $nota->id_area === 1)
                                                 MEFP/VPCF/DGSGIF/N°
                                             @else
@@ -151,19 +151,20 @@
                                             {{$nota->nro_cite}}/{{$nota->gestion}}
                                         
                                         </h6></td>
-                                        {{-- <td>
+                                        <td style="width: 10%;">
                                             <h6>
-                                            @php
+                                            {{-- @php
                                                 $user = App\User::find($nota->id_user);
 
                                             @endphp
-                                            {{ $user->username }}
+                                            {{ $user->username }} --}}
+                                            {{ $nota->usu_cre }}
                                             </h6>
-                                        </td> --}}
-                                        <td style="width: 130px;"><h6>{{ $nota->nombre_des }}</h6></td>
+                                        </td>
+                                        {{-- <td style="width: 130px;"><h6>{{ $nota->nombre_des }}</h6></td> --}}
                                         {{-- <td><h6>{{ $nota->cargo_des }}</h6></td>
                                         <td><h6>{{ $nota->institucion_des }}</h6></td> --}}
-                                        <td style="width: 90px;"><h6>{{ $nota->fecha_recepcion }}</h6></td>
+                                        <td style="width: 15%;"><h6>{{ $nota->fecha_recepcion }}</h6></td>
                                         {{-- <td><h6>{{ date('d/m/Y', strtotime($nota->fecha_recepcion)) }}</h6></td> --}}
 
                                         {{-- <td>
@@ -180,14 +181,14 @@
                                             </h6>
                                         </td> --}}
 
-                                        <td style="width: 40px;">
+                                        <td style="width: 5%;">
                                             <h6>
                                                 <a href="{{route('modifica_nota',$nota)}}" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                                   </svg></a>
                                             </h6>
-                                        </td  style="width: 40px;">
+                                        </td  style="width: 5%;">
                                         
                                         <td>
                                             <h6>
