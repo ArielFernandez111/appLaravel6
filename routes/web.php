@@ -17,13 +17,16 @@
 
 Auth::routes();
 
-Route::get('/', 'Auth\LoginController@inicio');
+// Route::get('/', 'Auth\LoginController@inicio');
 
 // Route::get('/', 'HomeController@index')->name('home');
-Route::post('newlogin', 'Auth\LoginController@login')->name('newlogin');
+Route::get('/', 'LoginController@index')->name('index');
+Route::post('/newlogin', 'LoginController@newlogin')->name('newlogin');
+Route::get('/logout', 'LoginController@logout')->name('logout');
+Route::get('/home', 'LoginController@home')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@home')->name('home');
+// Route::get('/home', 'HomeController@home')->name('home');
 
 
 Route::get('/notas/listado', 'NotaController@index')->name('listado_nota');

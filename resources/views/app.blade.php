@@ -165,15 +165,16 @@
                                 <div class="d-flex no-block align-items-center p-3 mb-2 border-bottom">
                                     <div class=""><img src="{{ asset('src/assets/images/users/0.png') }}" alt="user" class="rounded" width="80"></div>
                                     <div class="ml-2">
-                                        <h4 class="mb-0">{{ auth()->user()->name }}</h4>
-                                        <p class=" mb-0">{{ auth()->user()->email }}</p>
+                                        <h4 class="mb-0">{{ session('nombre') }}</h4>
+                                        <p class=" mb-0">{{ Session::get('email') }}</p>
                                         <a href="#!" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a>
                                     </div>
                                 </div>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off mr-1 ml-1"></i> {{ __('CERRAR SESION') }}</a>
+                                <a class="dropdown-item" href="{{ url('logout') }}"><i class="fa fa-power-off mr-1 ml-1"></i> {{ __('CERRAR SESION') }}</a>
+                                <!-- <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off mr-1 ml-1"></i> {{ __('CERRAR SESION') }}</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
-                                </form>
+                                </form> -->
                             </div>
                         </li>
                         <!-- ============================================================== -->
@@ -206,13 +207,19 @@
                                 <!-- User profile image -->
                                 <div class="profile-img m-auto"> <img src="{{ asset('src/assets/images/users/0.png') }}" alt="user" class="w-100 rounded-circle" /> </div>
                                 <!-- User profile text-->
-                                <div class="profile-text py-1"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ auth()->user()->name }} <span class="caret"></span></a>
+                                <div class="profile-text py-1"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ session('nombre') }} <span class="caret"></span></a>
                                     <div class="dropdown-menu animated flipInY">
                                         <a href="#!" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
-                                        <div class="dropdown-divider"></div> <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Cerrar Sesion</a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="{{ url('logout') }}" class="dropdown-item">
+                                        <i class="fa fa-power-off"></i> 
+                                        Cerrar Sesion</a>
+                                        <!--
+                                            <div class="dropdown-divider"></div> <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Cerrar Sesion</a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        -->
                                     </div>
                                 </div>
                             </div>
@@ -247,10 +254,11 @@
                 <!-- item-->
                 <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
                 <!-- item-->
-                <a href="{{ route('logout') }}" class="link" data-toggle="tooltip" title="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-power"></i></a>
+                <a href="{{ url('logout') }}" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+                <!-- <a href="{{ route('logout') }}" class="link" data-toggle="tooltip" title="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-power"></i></a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
-                </form>
+                </form> -->
             </div>
             <!-- End Bottom points-->
         </aside>
