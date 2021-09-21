@@ -17,11 +17,25 @@ class NotaController extends Controller
     //     $this->middleware('auth');
     // }
 
-    public function index(){
+    // public function home(){
+    //     if(Session::get('login') !== true){
+    //         return redirect('/');
+    //     }else{
+    //         return redirect('/notas/listado');
+    //     }
+    // }
 
-        $notas = Nota::orderBy('Id','desc')->paginate();
+    public function index(){
+        if(Session::get('login') !== true){
+            return redirect('/');
+        }else{
+            $notas = Nota::orderBy('Id','desc')->paginate();
         $documentos = Documento::get();
         return view('notas.listado', compact('notas', 'documentos'));
+        }
+        // $notas = Nota::orderBy('Id','desc')->paginate();
+        // $documentos = Documento::get();
+        // return view('notas.listado', compact('notas', 'documentos'));
     }
 
     public function index2($documento){
@@ -40,13 +54,18 @@ class NotaController extends Controller
 
     public function create(){
         //$areas = [Area::get(), Documento::get()];
-        $areas      = Area::get();
+        
+        if(Session::get('login') !== true){
+            return redirect('/');
+        }else{
+            $areas      = Area::get();
         $documentos = Documento::get();
-
+        return view('notas.create')->with(compact('areas', 'documentos'));
+        }
          //$areas = Documento::get();
         //$notas = Area::get();
         //dd($areas);
-        return view('notas.create')->with(compact('areas', 'documentos'));
+        
     }
 
     public function store(Request $request){
@@ -120,12 +139,18 @@ class NotaController extends Controller
                 if($nota->id_area == 1){
                     $codigo = 46;
                 }else{
-                    if($nota->id_area == 2 || $nota->id_area == 4){
-                        // Si es UISS o UIT
-                        $codigo = 123;
-                    }else{
-                        // Si es USI
-                        $codigo = 107;
+                    if($nota->id_area == 2){//} || $nota->id_area == 4){
+                        // Si es UISS
+                        $codigo = 106;
+                    }else
+                    {
+                        if($nota->id_area == 4){
+                            // Si es  UIT
+                            $codigo = 123;
+                        }else{
+                            // Si es USI
+                            $codigo = 107;
+                        }
                     }
                 }
 
@@ -179,18 +204,30 @@ class NotaController extends Controller
     public function show(Nota $nota){
 
         //$nota = Nota::find($id);
-
-        return view('notas.show', compact('nota'));
+        if(Session::get('login') !== true){
+            return redirect('/');
+        }else{
+            return view('notas.show', compact('nota'));
+        }
+        
     }
 
     public function edit(Nota $nota){
         //dd("holas");
         //$nota = Nota::find($nota);
-        $areas = Area::get();
+
+        if(Session::get('login') !== true){
+            return redirect('/');
+        }else{
+            $areas = Area::get();
         $documentos = Documento::get();
+        return view('notas.edit', compact('nota','areas','documentos'));
+        }
+
+        
         //return $nota;
         // return view('notas.edit', compact('nota'));
-        return view('notas.edit', compact('nota','areas','documentos'));
+        
         // return view('notas.create')->with(compact('areas'));
 
 
