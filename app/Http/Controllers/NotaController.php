@@ -29,7 +29,7 @@ class NotaController extends Controller
         if(Session::get('login') !== true){
             return redirect('/');
         }else{
-            $notas = Nota::orderBy('Id','desc')->paginate();
+            $notas = Nota::orderBy('Id','desc')->paginate(1000);
         $documentos = Documento::get();
         return view('notas.listado', compact('notas', 'documentos'));
         }
@@ -40,7 +40,7 @@ class NotaController extends Controller
 
     public function index2($documento){
 
-        $notas = Nota::where('id_documento', $documento)->orderBy('Id','desc')->paginate();
+        $notas = Nota::where('id_documento', $documento)->orderBy('Id','desc')->paginate(1000);
         $documentos = Documento::get();
         // dd($documentos);
         return view('notas.listado', compact('notas', 'documentos'));
@@ -96,6 +96,7 @@ class NotaController extends Controller
         // Hallamos el maximo valor en nota_cite donde id_area sea igual a nota.id_area y id_documento sea igual a nota.id_documento
         $nro_cite = Nota::where('id_area', $request->id_area)
                         ->where('id_documento', $request->id_documento)
+						->where('gestion', $nota->gestion)
                         ->max('nro_cite');
         // Preguntamos si $nro_cite esta definido
         if($nro_cite){
@@ -168,6 +169,7 @@ class NotaController extends Controller
                 // Hallamos el maximo valor en nota_cite donde id_area sea igual a nota.id_area y id_documento sea igual a nota.id_documento
                 $numero = HojaRuta::where('codigo', $codigo)
                                     ->where('registro', $registro)
+									->where('gestion', $hojaruta->gestion)
                                     ->max('numero');
              
                 // Preguntamos si $nro_cite esta definido
